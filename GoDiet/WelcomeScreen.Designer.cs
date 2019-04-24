@@ -5,7 +5,7 @@
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        public System.ComponentModel.IContainer components = null;
 
 
         /// <summary>
@@ -27,20 +27,20 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WelcomeScreen));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.PrimaryInformation = new System.Windows.Forms.TabControl();
@@ -117,6 +117,7 @@
             this.intenseModeBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.knowHowTab = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dayWeightBox = new System.Windows.Forms.TextBox();
             this.weightInDay = new System.Windows.Forms.Label();
             this.weightUpdateBtn = new System.Windows.Forms.Button();
@@ -135,11 +136,8 @@
             this.dinnerTab = new System.Windows.Forms.TabPage();
             this.dinnerRichTxtBx = new System.Windows.Forms.RichTextBox();
             this.otherInfoTab = new System.Windows.Forms.TabPage();
-            this.BackBtn = new System.Windows.Forms.Button();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.BackBtn = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.PrimaryInformation.SuspendLayout();
             this.activityTab.SuspendLayout();
@@ -155,6 +153,7 @@
             this.intenseModeTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.intenseModeChart)).BeginInit();
             this.knowHowTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.recipesTab.SuspendLayout();
             this.breakTab.SuspendLayout();
             this.breakfastTab.SuspendLayout();
@@ -162,7 +161,6 @@
             this.lunchTab.SuspendLayout();
             this.dinnerTab.SuspendLayout();
             this.otherInfoTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -176,7 +174,6 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1155, 588);
             this.flowLayoutPanel1.TabIndex = 0;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.FlowLayoutPanel1_Paint);
             // 
             // PrimaryInformation
             // 
@@ -198,7 +195,6 @@
             this.PrimaryInformation.ShowToolTips = true;
             this.PrimaryInformation.Size = new System.Drawing.Size(1144, 579);
             this.PrimaryInformation.TabIndex = 1;
-            this.PrimaryInformation.SelectedIndexChanged += new System.EventHandler(this.PrimaryInformation_SelectedIndexChanged);
             // 
             // activityTab
             // 
@@ -226,7 +222,6 @@
             this.activityTab.Size = new System.Drawing.Size(1136, 547);
             this.activityTab.TabIndex = 0;
             this.activityTab.Text = "Activity";
-            this.activityTab.Click += new System.EventHandler(this.TabPage1_Click);
             // 
             // welcomeTxtBox
             // 
@@ -240,14 +235,13 @@
             this.welcomeTxtBox.Size = new System.Drawing.Size(340, 115);
             this.welcomeTxtBox.TabIndex = 14;
             this.welcomeTxtBox.Text = "Welcome to \r\nGoDiet Program!";
-            this.welcomeTxtBox.TextChanged += new System.EventHandler(this.TextBox2_TextChanged);
             // 
             // WeightResultBox
             // 
             this.WeightResultBox.BackColor = System.Drawing.Color.White;
             this.WeightResultBox.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.WeightResultBox.Enabled = false;
-            this.WeightResultBox.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WeightResultBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WeightResultBox.ForeColor = System.Drawing.Color.Red;
             this.WeightResultBox.Location = new System.Drawing.Point(408, 264);
             this.WeightResultBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -260,7 +254,6 @@
             this.WeightResultBox.TabIndex = 12;
             this.WeightResultBox.TabStop = false;
             this.WeightResultBox.Text = "Your Result";
-            this.WeightResultBox.TextChanged += new System.EventHandler(this.TextBox1_TextChanged_1);
             // 
             // intakeBox
             // 
@@ -272,7 +265,6 @@
             this.intakeBox.Size = new System.Drawing.Size(71, 22);
             this.intakeBox.TabIndex = 5;
             this.intakeBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.intakeBox.TextChanged += new System.EventHandler(this.IntakeBox_TextChanged);
             // 
             // unameBox
             // 
@@ -284,7 +276,6 @@
             this.unameBox.Size = new System.Drawing.Size(100, 22);
             this.unameBox.TabIndex = 4;
             this.unameBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.unameBox.TextChanged += new System.EventHandler(this.UnameBox_TextChanged);
             // 
             // kgBox
             // 
@@ -296,7 +287,6 @@
             this.kgBox.Size = new System.Drawing.Size(100, 22);
             this.kgBox.TabIndex = 6;
             this.kgBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.kgBox.TextChanged += new System.EventHandler(this.TextBox7_TextChanged);
             // 
             // BMIBox
             // 
@@ -320,7 +310,6 @@
             this.dietModeBox.Size = new System.Drawing.Size(100, 22);
             this.dietModeBox.TabIndex = 8;
             this.dietModeBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.dietModeBox.TextChanged += new System.EventHandler(this.TextBox9_TextChanged);
             // 
             // weightBox
             // 
@@ -332,7 +321,6 @@
             this.weightBox.Size = new System.Drawing.Size(100, 22);
             this.weightBox.TabIndex = 9;
             this.weightBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.weightBox.TextChanged += new System.EventHandler(this.WeightBox_TextChanged);
             // 
             // weightResultBtn
             // 
@@ -464,7 +452,6 @@
             this.settingstab.Size = new System.Drawing.Size(1136, 547);
             this.settingstab.TabIndex = 1;
             this.settingstab.Text = "Settings";
-            this.settingstab.Click += new System.EventHandler(this.TabPage2_Click);
             // 
             // emailBx
             // 
@@ -499,7 +486,6 @@
             this.surnameBox.Name = "surnameBox";
             this.surnameBox.Size = new System.Drawing.Size(100, 29);
             this.surnameBox.TabIndex = 5;
-            this.surnameBox.TextChanged += new System.EventHandler(this.SurnameBox_TextChanged);
             // 
             // nameBox
             // 
@@ -508,7 +494,6 @@
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(100, 29);
             this.nameBox.TabIndex = 4;
-            this.nameBox.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
             // 
             // RemoveAccountBtn
             // 
@@ -558,7 +543,6 @@
             this.oldPasswBox.Size = new System.Drawing.Size(100, 29);
             this.oldPasswBox.TabIndex = 14;
             this.oldPasswBox.UseSystemPasswordChar = true;
-            this.oldPasswBox.TextChanged += new System.EventHandler(this.OldPasswBox_TextChanged);
             // 
             // label7
             // 
@@ -569,7 +553,6 @@
             this.label7.Size = new System.Drawing.Size(106, 21);
             this.label7.TabIndex = 13;
             this.label7.Text = "New Password";
-            this.label7.Click += new System.EventHandler(this.Label7_Click);
             // 
             // label6
             // 
@@ -637,7 +620,6 @@
             this.GenderBox.Name = "GenderBox";
             this.GenderBox.Size = new System.Drawing.Size(121, 30);
             this.GenderBox.TabIndex = 8;
-            this.GenderBox.SelectedIndexChanged += new System.EventHandler(this.GenderBox_SelectedIndexChanged);
             // 
             // noRadioBtn
             // 
@@ -651,7 +633,6 @@
             this.noRadioBtn.TabStop = true;
             this.noRadioBtn.Text = "No";
             this.noRadioBtn.UseVisualStyleBackColor = true;
-            this.noRadioBtn.CheckedChanged += new System.EventHandler(this.RadioButton2_CheckedChanged);
             // 
             // yesRadioBtn
             // 
@@ -685,7 +666,6 @@
             this.label3.Size = new System.Drawing.Size(139, 21);
             this.label3.TabIndex = 2;
             this.label3.Text = "Are You vegetarian?";
-            this.label3.Click += new System.EventHandler(this.Label3_Click);
             // 
             // surnameLbl
             // 
@@ -696,7 +676,6 @@
             this.surnameLbl.Size = new System.Drawing.Size(70, 21);
             this.surnameLbl.TabIndex = 1;
             this.surnameLbl.Text = "Surname";
-            this.surnameLbl.Click += new System.EventHandler(this.Label2_Click_1);
             // 
             // nameLbl
             // 
@@ -707,7 +686,6 @@
             this.nameLbl.Size = new System.Drawing.Size(69, 21);
             this.nameLbl.TabIndex = 0;
             this.nameLbl.Text = "Forname";
-            this.nameLbl.Click += new System.EventHandler(this.Label1_Click);
             // 
             // progressTab
             // 
@@ -738,26 +716,26 @@
             this.button1.TabIndex = 32;
             this.button1.Text = "LOAD CHART";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_2);
+            this.button1.Click += new System.EventHandler(this.Button1_Click_2);
             // 
             // progressChart
             // 
             this.progressChart.BackColor = System.Drawing.Color.DodgerBlue;
-            chartArea9.Name = "ChartArea1";
-            this.progressChart.ChartAreas.Add(chartArea9);
-            legend9.Name = "Legend1";
-            this.progressChart.Legends.Add(legend9);
+            chartArea1.Name = "ChartArea1";
+            this.progressChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.progressChart.Legends.Add(legend1);
             this.progressChart.Location = new System.Drawing.Point(3, 2);
             this.progressChart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.progressChart.Name = "progressChart";
             this.progressChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series9.Legend = "Legend1";
-            series9.LegendText = "Weight Loss";
-            series9.MarkerBorderColor = System.Drawing.Color.Blue;
-            series9.Name = "Weight";
-            this.progressChart.Series.Add(series9);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.LegendText = "Weight Loss";
+            series1.MarkerBorderColor = System.Drawing.Color.Blue;
+            series1.Name = "Weight";
+            this.progressChart.Series.Add(series1);
             this.progressChart.Size = new System.Drawing.Size(1130, 535);
             this.progressChart.TabIndex = 3;
             this.progressChart.Text = "chart1";
@@ -798,7 +776,7 @@
             this.button2.TabIndex = 31;
             this.button2.Text = "REFRESH GRAPHS";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.button2.Click += new System.EventHandler(this.Button2_Click_1);
             // 
             // intenseModeRadioBtn
             // 
@@ -813,7 +791,6 @@
             this.intenseModeRadioBtn.TabStop = true;
             this.intenseModeRadioBtn.Text = "Intense Mode";
             this.intenseModeRadioBtn.UseVisualStyleBackColor = true;
-            this.intenseModeRadioBtn.CheckedChanged += new System.EventHandler(this.RadioButton3_CheckedChanged);
             // 
             // steadyModeRadioBtn
             // 
@@ -828,7 +805,6 @@
             this.steadyModeRadioBtn.TabStop = true;
             this.steadyModeRadioBtn.Text = "Steady Mode";
             this.steadyModeRadioBtn.UseVisualStyleBackColor = true;
-            this.steadyModeRadioBtn.CheckedChanged += new System.EventHandler(this.RadioButton2_CheckedChanged_1);
             // 
             // slowModeRadioBtn
             // 
@@ -944,6 +920,7 @@
             this.slowModeBox.Size = new System.Drawing.Size(132, 22);
             this.slowModeBox.TabIndex = 2;
             this.slowModeBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.slowModeBox.TextChanged += new System.EventHandler(this.slowModeBox_TextChanged);
             // 
             // label1
             // 
@@ -960,25 +937,24 @@
             // slowModeChart
             // 
             this.slowModeChart.BackColor = System.Drawing.Color.DodgerBlue;
-            chartArea10.Name = "ChartArea1";
-            this.slowModeChart.ChartAreas.Add(chartArea10);
-            legend10.Name = "Legend1";
-            this.slowModeChart.Legends.Add(legend10);
+            chartArea2.Name = "ChartArea1";
+            this.slowModeChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.slowModeChart.Legends.Add(legend2);
             this.slowModeChart.Location = new System.Drawing.Point(1, 0);
             this.slowModeChart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.slowModeChart.Name = "slowModeChart";
             this.slowModeChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series10.Legend = "Legend1";
-            series10.LegendText = "Weight Loss";
-            series10.MarkerBorderColor = System.Drawing.Color.Blue;
-            series10.Name = "Weight";
-            this.slowModeChart.Series.Add(series10);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.LegendText = "Weight Loss";
+            series2.MarkerBorderColor = System.Drawing.Color.Blue;
+            series2.Name = "Weight";
+            this.slowModeChart.Series.Add(series2);
             this.slowModeChart.Size = new System.Drawing.Size(532, 337);
             this.slowModeChart.TabIndex = 0;
             this.slowModeChart.Text = "chart1";
-            this.slowModeChart.Click += new System.EventHandler(this.Chart1_Click);
             // 
             // steadyModeTab
             // 
@@ -1001,21 +977,21 @@
             // steadyModeChart
             // 
             this.steadyModeChart.BackColor = System.Drawing.Color.DodgerBlue;
-            chartArea11.Name = "ChartArea1";
-            this.steadyModeChart.ChartAreas.Add(chartArea11);
-            legend11.Name = "Legend1";
-            this.steadyModeChart.Legends.Add(legend11);
+            chartArea3.Name = "ChartArea1";
+            this.steadyModeChart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.steadyModeChart.Legends.Add(legend3);
             this.steadyModeChart.Location = new System.Drawing.Point(1, 0);
             this.steadyModeChart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.steadyModeChart.Name = "steadyModeChart";
             this.steadyModeChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series11.ChartArea = "ChartArea1";
-            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series11.Legend = "Legend1";
-            series11.LegendText = "Weight Loss";
-            series11.MarkerBorderColor = System.Drawing.Color.Blue;
-            series11.Name = "Weight";
-            this.steadyModeChart.Series.Add(series11);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.Legend = "Legend1";
+            series3.LegendText = "Weight Loss";
+            series3.MarkerBorderColor = System.Drawing.Color.Blue;
+            series3.Name = "Weight";
+            this.steadyModeChart.Series.Add(series3);
             this.steadyModeChart.Size = new System.Drawing.Size(532, 337);
             this.steadyModeChart.TabIndex = 13;
             this.steadyModeChart.Text = "chart1";
@@ -1100,7 +1076,6 @@
             this.label2.Size = new System.Drawing.Size(157, 23);
             this.label2.TabIndex = 3;
             this.label2.Text = "Days to achieve goal";
-            this.label2.Click += new System.EventHandler(this.Label2_Click);
             // 
             // intenseModeTab
             // 
@@ -1118,26 +1093,25 @@
             this.intenseModeTab.Size = new System.Drawing.Size(726, 339);
             this.intenseModeTab.TabIndex = 2;
             this.intenseModeTab.Text = "Intense Mode";
-            this.intenseModeTab.Click += new System.EventHandler(this.intenseModeTab_Click);
             // 
             // intenseModeChart
             // 
             this.intenseModeChart.BackColor = System.Drawing.Color.DodgerBlue;
-            chartArea12.Name = "ChartArea1";
-            this.intenseModeChart.ChartAreas.Add(chartArea12);
-            legend12.Name = "Legend1";
-            this.intenseModeChart.Legends.Add(legend12);
+            chartArea4.Name = "ChartArea1";
+            this.intenseModeChart.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.intenseModeChart.Legends.Add(legend4);
             this.intenseModeChart.Location = new System.Drawing.Point(0, 0);
             this.intenseModeChart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.intenseModeChart.Name = "intenseModeChart";
             this.intenseModeChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series12.ChartArea = "ChartArea1";
-            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series12.Legend = "Legend1";
-            series12.LegendText = "Weight Loss";
-            series12.MarkerBorderColor = System.Drawing.Color.Blue;
-            series12.Name = "Weight";
-            this.intenseModeChart.Series.Add(series12);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.Legend = "Legend1";
+            series4.LegendText = "Weight Loss";
+            series4.MarkerBorderColor = System.Drawing.Color.Blue;
+            series4.Name = "Weight";
+            this.intenseModeChart.Series.Add(series4);
             this.intenseModeChart.Size = new System.Drawing.Size(533, 337);
             this.intenseModeChart.TabIndex = 13;
             this.intenseModeChart.Text = "chart1";
@@ -1157,7 +1131,6 @@
             this.intenseMonthsBox.Size = new System.Drawing.Size(132, 22);
             this.intenseMonthsBox.TabIndex = 12;
             this.intenseMonthsBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.intenseMonthsBox.TextChanged += new System.EventHandler(this.intenseMonthsBox_TextChanged);
             // 
             // intenseWeeksBox
             // 
@@ -1174,7 +1147,6 @@
             this.intenseWeeksBox.Size = new System.Drawing.Size(132, 22);
             this.intenseWeeksBox.TabIndex = 11;
             this.intenseWeeksBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.intenseWeeksBox.TextChanged += new System.EventHandler(this.intenseWeeksBox_TextChanged);
             // 
             // label13
             // 
@@ -1215,7 +1187,6 @@
             this.intenseModeBox.Size = new System.Drawing.Size(132, 22);
             this.intenseModeBox.TabIndex = 4;
             this.intenseModeBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.intenseModeBox.TextChanged += new System.EventHandler(this.intenseModeBox_TextChanged);
             // 
             // label8
             // 
@@ -1228,7 +1199,6 @@
             this.label8.Size = new System.Drawing.Size(157, 23);
             this.label8.TabIndex = 3;
             this.label8.Text = "Days to achieve goal";
-            this.label8.Click += new System.EventHandler(this.Label8_Click);
             // 
             // knowHowTab
             // 
@@ -1242,6 +1212,17 @@
             this.knowHowTab.TabIndex = 3;
             this.knowHowTab.Text = "Know-How";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.LightCyan;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(560, 489);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // dayWeightBox
             // 
             this.dayWeightBox.BackColor = System.Drawing.Color.Gainsboro;
@@ -1251,7 +1232,6 @@
             this.dayWeightBox.Name = "dayWeightBox";
             this.dayWeightBox.Size = new System.Drawing.Size(77, 22);
             this.dayWeightBox.TabIndex = 25;
-            this.dayWeightBox.TextChanged += new System.EventHandler(this.DayWeightBox_TextChanged);
             // 
             // weightInDay
             // 
@@ -1333,7 +1313,7 @@
             this.emailBtn.TabIndex = 16;
             this.emailBtn.Text = "Email";
             this.emailBtn.UseVisualStyleBackColor = false;
-            this.emailBtn.Click += new System.EventHandler(this.emailBtn_Click);
+            this.emailBtn.Click += new System.EventHandler(this.EmailBtn_Click);
             // 
             // printBtn
             // 
@@ -1352,7 +1332,7 @@
             this.printBtn.TabIndex = 15;
             this.printBtn.Text = "Print";
             this.printBtn.UseVisualStyleBackColor = false;
-            this.printBtn.Click += new System.EventHandler(this.printBtn_Click);
+            this.printBtn.Click += new System.EventHandler(this.printBtn_Click_1);
             // 
             // loadRecipesBtn
             // 
@@ -1413,7 +1393,6 @@
             this.breakfastRichTxtBx.TabIndex = 4;
             this.breakfastRichTxtBx.Text = "Please, press the Load button.";
             this.breakfastRichTxtBx.UseWaitCursor = true;
-            this.breakfastRichTxtBx.TextChanged += new System.EventHandler(this.breakfastRichTxtBx_TextChanged);
             // 
             // breakf2Tab
             // 
@@ -1494,38 +1473,6 @@
             this.otherInfoTab.TabIndex = 4;
             this.otherInfoTab.Text = "User Guide";
             // 
-            // BackBtn
-            // 
-            this.BackBtn.BackColor = System.Drawing.Color.Lavender;
-            this.BackBtn.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.BackBtn.FlatAppearance.BorderSize = 2;
-            this.BackBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.BackBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.BackBtn.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BackBtn.Location = new System.Drawing.Point(3, 585);
-            this.BackBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BackBtn.Name = "BackBtn";
-            this.BackBtn.Size = new System.Drawing.Size(32, 32);
-            this.BackBtn.TabIndex = 23;
-            this.BackBtn.UseVisualStyleBackColor = false;
-            this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
-            // 
-            // printDialog1
-            // 
-            this.printDialog1.UseEXDialog = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.LightCyan;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(560, 489);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
@@ -1535,6 +1482,22 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
+            // 
+            // BackBtn
+            // 
+            this.BackBtn.BackColor = System.Drawing.Color.Lavender;
+            this.BackBtn.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.BackBtn.FlatAppearance.BorderSize = 2;
+            this.BackBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BackBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.BackBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BackBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BackBtn.Location = new System.Drawing.Point(3, 585);
+            this.BackBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BackBtn.Name = "BackBtn";
+            this.BackBtn.Size = new System.Drawing.Size(32, 32);
+            this.BackBtn.TabIndex = 23;
+            this.BackBtn.UseVisualStyleBackColor = false;
             // 
             // WelcomeScreen
             // 
@@ -1572,6 +1535,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.intenseModeChart)).EndInit();
             this.knowHowTab.ResumeLayout(false);
             this.knowHowTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.recipesTab.ResumeLayout(false);
             this.breakTab.ResumeLayout(false);
             this.breakfastTab.ResumeLayout(false);
@@ -1580,7 +1544,6 @@
             this.dinnerTab.ResumeLayout(false);
             this.otherInfoTab.ResumeLayout(false);
             this.otherInfoTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
@@ -1588,104 +1551,102 @@
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Drawing.Printing.PrintDocument printDocument1;
-        private System.Windows.Forms.PrintDialog printDialog1;
-        //private GoDietCustInfoDataSetTableAdapters.tblVegeRecipiesTableAdapter tblVegeRecipiesTableAdapter1;
-        private System.Windows.Forms.Button BackBtn;
-        private System.Windows.Forms.TabControl PrimaryInformation;
-        private System.Windows.Forms.TabPage activityTab;
-        private System.Windows.Forms.TextBox welcomeTxtBox;
-        private System.Windows.Forms.TextBox WeightResultBox;
-        private System.Windows.Forms.TextBox intakeBox;
-        private System.Windows.Forms.TextBox unameBox;
-        private System.Windows.Forms.TextBox kgBox;
-        private System.Windows.Forms.TextBox BMIBox;
-        private System.Windows.Forms.TextBox dietModeBox;
-        private System.Windows.Forms.TextBox weightBox;
-        private System.Windows.Forms.Button weightResultBtn;
-        private System.Windows.Forms.Label WeightLblInfo;
-        private System.Windows.Forms.Label userNlbl;
-        private System.Windows.Forms.Label caloriesLbl;
-        private System.Windows.Forms.Label weoghtLbl;
-        private System.Windows.Forms.Label dietLbl;
-        private System.Windows.Forms.Label bmiLbl;
-        private System.Windows.Forms.Label kgLbl;
-        private System.Windows.Forms.TabPage settingstab;
-        private System.Windows.Forms.TextBox modifLastWeightIn;
-        private System.Windows.Forms.TextBox surnameBox;
-        private System.Windows.Forms.TextBox nameBox;
-        private System.Windows.Forms.Button RemoveAccountBtn;
-        private System.Windows.Forms.Label modifWeightLastIn;
-        private System.Windows.Forms.TextBox newPasswBox;
-        private System.Windows.Forms.TextBox oldPasswBox;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button clearBtn;
-        private System.Windows.Forms.Button updateBtn;
-        private System.Windows.Forms.ComboBox GenderBox;
-        private System.Windows.Forms.RadioButton noRadioBtn;
-        private System.Windows.Forms.RadioButton yesRadioBtn;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label surnameLbl;
-        private System.Windows.Forms.Label nameLbl;
-        private System.Windows.Forms.TabPage progressTab;
-        private System.Windows.Forms.DataVisualization.Charting.Chart progressChart;
-        private System.Windows.Forms.TabPage dayInTab;
-        private System.Windows.Forms.RadioButton intenseModeRadioBtn;
-        private System.Windows.Forms.RadioButton steadyModeRadioBtn;
-        private System.Windows.Forms.RadioButton slowModeRadioBtn;
-        private System.Windows.Forms.TabControl slowTabControl;
-        private System.Windows.Forms.TabPage slowModeTab;
-        private System.Windows.Forms.TextBox slowMonthsBox;
-        private System.Windows.Forms.TextBox slowWeeksBox;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox slowModeBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart slowModeChart;
-        private System.Windows.Forms.TabPage steadyModeTab;
-        private System.Windows.Forms.DataVisualization.Charting.Chart steadyModeChart;
-        private System.Windows.Forms.TextBox steadyMonthsBox;
-        private System.Windows.Forms.TextBox steadyWeeksBox;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox steadyModeBox;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TabPage intenseModeTab;
-        private System.Windows.Forms.DataVisualization.Charting.Chart intenseModeChart;
-        private System.Windows.Forms.TextBox intenseMonthsBox;
-        private System.Windows.Forms.TextBox intenseWeeksBox;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox intenseModeBox;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TabPage knowHowTab;
-        private System.Windows.Forms.TextBox dayWeightBox;
-        private System.Windows.Forms.Label weightInDay;
-        private System.Windows.Forms.Button weightUpdateBtn;
-        private System.Windows.Forms.Button dietPlanBtn;
-        private System.Windows.Forms.TabPage recipesTab;
-        private System.Windows.Forms.Button loadRecipesBtn;
-        private System.Windows.Forms.TabControl breakTab;
-        private System.Windows.Forms.TabPage breakfastTab;
-        private System.Windows.Forms.RichTextBox breakfastRichTxtBx;
-        private System.Windows.Forms.TabPage breakf2Tab;
-        private System.Windows.Forms.RichTextBox break2RichTxtBx;
-        private System.Windows.Forms.TabPage lunchTab;
-        private System.Windows.Forms.RichTextBox lunchRichTxtBx;
-        private System.Windows.Forms.TabPage dinnerTab;
-        private System.Windows.Forms.RichTextBox dinnerRichTxtBx;
-        private System.Windows.Forms.TabPage otherInfoTab;
-        private System.Windows.Forms.Button printBtn;
-        private System.Windows.Forms.Button emailBtn;
-        private System.Windows.Forms.TextBox emailBx;
-        private System.Windows.Forms.Label updateEmailLbl;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        public System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        //public GoDietCustInfoDataSetTableAdapters.tblVegeRecipiesTableAdapter tblVegeRecipiesTableAdapter1;
+        public System.Windows.Forms.Button BackBtn;
+        public System.Windows.Forms.TabControl PrimaryInformation;
+        public System.Windows.Forms.TabPage activityTab;
+        public System.Windows.Forms.TextBox welcomeTxtBox;
+        public System.Windows.Forms.TextBox WeightResultBox;
+        public System.Windows.Forms.TextBox intakeBox;
+        public System.Windows.Forms.TextBox unameBox;
+        public System.Windows.Forms.TextBox kgBox;
+        public System.Windows.Forms.TextBox BMIBox;
+        public System.Windows.Forms.TextBox dietModeBox;
+        public System.Windows.Forms.TextBox weightBox;
+        public System.Windows.Forms.Button weightResultBtn;
+        public System.Windows.Forms.Label WeightLblInfo;
+        public System.Windows.Forms.Label userNlbl;
+        public System.Windows.Forms.Label caloriesLbl;
+        public System.Windows.Forms.Label weoghtLbl;
+        public System.Windows.Forms.Label dietLbl;
+        public System.Windows.Forms.Label bmiLbl;
+        public System.Windows.Forms.Label kgLbl;
+        public System.Windows.Forms.TabPage settingstab;
+        public System.Windows.Forms.TextBox modifLastWeightIn;
+        public System.Windows.Forms.TextBox surnameBox;
+        public System.Windows.Forms.TextBox nameBox;
+        public System.Windows.Forms.Button RemoveAccountBtn;
+        public System.Windows.Forms.Label modifWeightLastIn;
+        public System.Windows.Forms.TextBox newPasswBox;
+        public System.Windows.Forms.TextBox oldPasswBox;
+        public System.Windows.Forms.Label label7;
+        public System.Windows.Forms.Label label6;
+        public System.Windows.Forms.Label label5;
+        public System.Windows.Forms.Button clearBtn;
+        public System.Windows.Forms.Button updateBtn;
+        public System.Windows.Forms.ComboBox GenderBox;
+        public System.Windows.Forms.RadioButton noRadioBtn;
+        public System.Windows.Forms.RadioButton yesRadioBtn;
+        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label surnameLbl;
+        public System.Windows.Forms.Label nameLbl;
+        public System.Windows.Forms.TabPage progressTab;
+        public System.Windows.Forms.DataVisualization.Charting.Chart progressChart;
+        public System.Windows.Forms.TabPage dayInTab;
+        public System.Windows.Forms.RadioButton intenseModeRadioBtn;
+        public System.Windows.Forms.RadioButton steadyModeRadioBtn;
+        public System.Windows.Forms.RadioButton slowModeRadioBtn;
+        public System.Windows.Forms.TabControl slowTabControl;
+        public System.Windows.Forms.TabPage slowModeTab;
+        public System.Windows.Forms.TextBox slowMonthsBox;
+        public System.Windows.Forms.TextBox slowWeeksBox;
+        public System.Windows.Forms.Label label10;
+        public System.Windows.Forms.Label label9;
+        public System.Windows.Forms.TextBox slowModeBox;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.DataVisualization.Charting.Chart slowModeChart;
+        public System.Windows.Forms.TabPage steadyModeTab;
+        public System.Windows.Forms.DataVisualization.Charting.Chart steadyModeChart;
+        public System.Windows.Forms.TextBox steadyMonthsBox;
+        public System.Windows.Forms.TextBox steadyWeeksBox;
+        public System.Windows.Forms.Label label11;
+        public System.Windows.Forms.Label label12;
+        public System.Windows.Forms.TextBox steadyModeBox;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.TabPage intenseModeTab;
+        public System.Windows.Forms.DataVisualization.Charting.Chart intenseModeChart;
+        public System.Windows.Forms.TextBox intenseMonthsBox;
+        public System.Windows.Forms.TextBox intenseWeeksBox;
+        public System.Windows.Forms.Label label13;
+        public System.Windows.Forms.Label label14;
+        public System.Windows.Forms.TextBox intenseModeBox;
+        public System.Windows.Forms.Label label8;
+        public System.Windows.Forms.TabPage knowHowTab;
+        public System.Windows.Forms.TextBox dayWeightBox;
+        public System.Windows.Forms.Label weightInDay;
+        public System.Windows.Forms.Button weightUpdateBtn;
+        public System.Windows.Forms.Button dietPlanBtn;
+        public System.Windows.Forms.TabPage recipesTab;
+        public System.Windows.Forms.Button loadRecipesBtn;
+        public System.Windows.Forms.TabControl breakTab;
+        public System.Windows.Forms.TabPage breakfastTab;
+        public System.Windows.Forms.RichTextBox breakfastRichTxtBx;
+        public System.Windows.Forms.TabPage breakf2Tab;
+        public System.Windows.Forms.RichTextBox break2RichTxtBx;
+        public System.Windows.Forms.TabPage lunchTab;
+        public System.Windows.Forms.RichTextBox lunchRichTxtBx;
+        public System.Windows.Forms.TabPage dinnerTab;
+        public System.Windows.Forms.RichTextBox dinnerRichTxtBx;
+        public System.Windows.Forms.TabPage otherInfoTab;
+        public System.Windows.Forms.Button printBtn;
+        public System.Windows.Forms.Button emailBtn;
+        public System.Windows.Forms.TextBox emailBx;
+        public System.Windows.Forms.Label updateEmailLbl;
+        public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Button button2;
+        public System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.PictureBox pictureBox2;
     }
 }

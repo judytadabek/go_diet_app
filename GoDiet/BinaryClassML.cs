@@ -16,11 +16,11 @@ namespace GoDiet
 
     public class BinaryClassML
     {
-
-        //static readonly string _trainDataPath = "C:\\Users\\Owner\\Desktop\\Go Diet App\\Project\\GoDiet\\GoDiet\\DietData\\DataModel\\trainData\\weight_lr_train1.csv";
-        static readonly string _testDataPath = "C:\\Users\\Mój Komputer\\Desktop\\GoDiet\\GoDiet\\GoDiet\\DietData\\DataModel\\testData\\weight_lr_test1.csv";
-        static string modelPathZip = "C:\\Users\\Mój Komputer\\Desktop\\GoDiet\\GoDiet\\GoDiet\\DietData\\DataModel\\modelPath\\Model.zip";
-        static string modelPath = "C:\\Users\\Mój Komputer\\Desktop\\GoDiet\\GoDiet\\GoDiet\\DietData\\DataModel\\modelPath";
+        public static string check = "";
+        static string getPath = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\"));
+        static readonly string _testDataPath = getPath + "\\DietData\\DataModel\\testData\\weight_lr_test1.csv";
+        static readonly string modelPathZip = getPath + "\\DietData\\DataModel\\modelPath\\Model.zip";
+        static readonly string modelPath = getPath + "\\DietData\\DataModel\\modelPath";
         //BinaryClassData - input dataset class
         // BinaryClassification - float labelling 0 for negative, 1 for positive.
         // 0 - no need to go for diet, 1 - qualified for a diet
@@ -65,9 +65,6 @@ namespace GoDiet
         }
         );
 
-
-
-
         public static ITransformer Train(MLContext mlContext, string dataPath)
         {
             IDataView dataView = _textLoader.Read(dataPath);
@@ -89,9 +86,6 @@ namespace GoDiet
 
             return model;
         }
-
-
-
 
         public static void Evaluate(MLContext mlContext, ITransformer model)
         {
@@ -124,7 +118,7 @@ namespace GoDiet
             RecordData(modelPath, f1);
             RecordData(modelPath, endModelEval);
             SaveModelAsFile(mlContext, model);
-
+            check = "Pass";
         }
 
 
@@ -159,46 +153,46 @@ namespace GoDiet
             return qualified4diet;
         }
 
-        public static void PredictWithModelLoadedFromFile(MLContext mlContext)
-        {
-            IEnumerable<BinaryClassData> sentiments = new[]
-            {
-                new BinaryClassData
-                {
-                    BMI = "50"
-                },
-                new BinaryClassData
-                {
-                    BMI = "12"
-                }
-            };
-            ITransformer loadedModel;
-            using (var stream = new FileStream(modelPathZip, FileMode.Open, FileAccess.Read, FileShare.Read))
-            {
-                loadedModel = mlContext.Model.Load(stream);
-            }
+        //public static void PredictWithModelLoadedFromFile(MLContext mlContext)
+        //{
+        //    IEnumerable<BinaryClassData> sentiments = new[]
+        //    {
+        //        new BinaryClassData
+        //        {
+        //            BMI = "50"
+        //        },
+        //        new BinaryClassData
+        //        {
+        //            BMI = "12"
+        //        }
+        //    };
+        //    ITransformer loadedModel;
+        //    using (var stream = new FileStream(modelPathZip, FileMode.Open, FileAccess.Read, FileShare.Read))
+        //    {
+        //        loadedModel = mlContext.Model.Load(stream);
+        //    }
 
-            // Create prediction engine
-            var sentimentStreamingDataView = mlContext.CreateStreamingDataView(sentiments);
-            var predictions = loadedModel.Transform(sentimentStreamingDataView);
+        //    // Create prediction engine
+        //    var sentimentStreamingDataView = mlContext.CreateStreamingDataView(sentiments);
+        //    var predictions = loadedModel.Transform(sentimentStreamingDataView);
 
-            // Use the model to predict whether comment data is toxic (1) or nice (0).
-            var predictedResults = predictions.AsEnumerable<BinaryClassPrediction>(mlContext, reuseRowObject: false);
+        //    // Use the model to predict whether comment data is toxic (1) or nice (0).
+        //    var predictedResults = predictions.AsEnumerable<BinaryClassPrediction>(mlContext, reuseRowObject: false);
 
-            Console.WriteLine();
+        //    Console.WriteLine();
 
-            Console.WriteLine("=============== Prediction Test of loaded model with a multiple samples ===============");
-            var sentimentsAndPredictions = sentiments.Zip(predictedResults, (sentiment, prediction) => (sentiment, prediction));
-            foreach (var item in sentimentsAndPredictions)
-            {
-                Console.WriteLine($"Sentiment: {item.sentiment.BMI} | Prediction: {(Convert.ToBoolean(item.prediction.Prediction) ? "1" : "0")} | Probability: {item.prediction.Probability} ");
-            }
-            Console.WriteLine("=============== End of prediction ===============");
-        }
+        //    Console.WriteLine("=============== Prediction Test of loaded model with a multiple samples ===============");
+        //    var sentimentsAndPredictions = sentiments.Zip(predictedResults, (sentiment, prediction) => (sentiment, prediction));
+        //    foreach (var (sentiment, prediction) in sentimentsAndPredictions)
+        //    {
+        //        Console.WriteLine($"Sentiment: {sentiment.BMI} | Prediction: {(Convert.ToBoolean(prediction.Prediction) ? "1" : "0")} | Probability: {prediction.Probability} ");
+        //    }
+        //    Console.WriteLine("=============== End of prediction ===============");
+        //}
 
 
         //saves the model as zip
-        private static void SaveModelAsFile(MLContext mlContext, ITransformer model)
+        public static void SaveModelAsFile(MLContext mlContext, ITransformer model)
         {
             using (var fs = new FileStream(modelPathZip, FileMode.Create, FileAccess.Write, FileShare.Write))
                 mlContext.Model.Save(model, fs);
@@ -208,6 +202,7 @@ namespace GoDiet
             RecordData(modelPath, "------------------------------------------->");
             RecordData(modelPath, savedModel);
             RecordData(modelPath, "==============================END OF PROCESS================================\n \n \n");
+            check = "Saved";
         }
 
         public static void RecordData(string modelPath, string content)
@@ -227,13 +222,16 @@ namespace GoDiet
                     sw.WriteLine($"First Data Record on {DateTime.Now} ................");
                     sw.WriteLine("\n");
                     sw.Close();
-                    //sw.Dispose();
+                    sw.Dispose();
                 }
+                
             }
             else
             {
                 File.AppendAllText(dataModelPath, content + Environment.NewLine);
             }
+
+            check = "Worked";
         }
 
     }

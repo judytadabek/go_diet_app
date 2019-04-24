@@ -23,34 +23,12 @@ namespace GoDiet
 {
     public partial class SetupWindow : Form
     {
-        //string currentDirectory = Directory.GetCurrentDirectory();
-        //string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB; AttachDbFilename=C:\Users\Owner\Documents\GoDietCustInfo.mdf;Integrated Security = True";
-        //string connectionString = InitialWindow.
-
-
-        // public delegate void FormEventHandler(object sender, EventArgs args);
-        // public event FormClosedEventHandler FormClosed;
-        public string GetConnectionString()
-        {
-            string connection = "";
-            string part = @"Data Source=(LocalDB)\MSSQLLocalDB; AttachDbFilename=";
-            string getPath = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\"));
-            string connectionPath = getPath + "dbs\\GODIETCUSTINFO.MDF";
-            string part2 = ";Integrated Security = True";
-            connection = part + connectionPath + part2;
-            return connection;
-
-        }
-
         public SetupWindow()
         {
             InitializeComponent();
         }
-
-
-        //string path = @"C:\Users\Owner\Desktop\Go Diet App\Project\GoDiet\GoDiet\DietData\UserSpecificData";
-        private void SetupWindow_Load(object sender, EventArgs e) { }
-        private void SignUpButton_Click(object sender, EventArgs e)
+        public void SetupWindow_Load(object sender, EventArgs e) { }
+        public void SignUpButton_Click(object sender, EventArgs e)
         {
             if (Username.Text == "" || Password.Text == "" || passwConf.Text == "" || Height2.Text == "" || Weight.Text == "")
             {
@@ -63,7 +41,7 @@ namespace GoDiet
             }
             else
             {
-                using (SqlConnection sqlConnect = new SqlConnection(GetConnectionString()))
+                using (SqlConnection sqlConnect = new SqlConnection(MyMethodsLib.GetConnectionString()))
                 {
                     sqlConnect.Open();
                     SqlCommand sqlCmdAddUserNamePasswGennderIfVeggie = new SqlCommand("UserAdd", sqlConnect);
@@ -231,33 +209,19 @@ namespace GoDiet
 
             }
         }
-
         void Clear()
         {
             Password.Text = passwConf.Text = "";
         }
 
-        private void Label4_Click(object sender, EventArgs e) { }
-        private void CheckBox1_CheckedChanged(object sender, EventArgs e) { }
-        private void Label1_Click(object sender, EventArgs e) { }
-        private void TextBox8_TextChanged(object sender, EventArgs e) { }
-        private void Label2_Click(object sender, EventArgs e) { }
-        private void Label10_Click(object sender, EventArgs e) { }
-        private void Label8_Click(object sender, EventArgs e) { }
-        private void BackBtn_Click(object sender, EventArgs e)
+        public void BackBtn_Click(object sender, EventArgs e)
         {
             this.Visible = false;
             this.DialogResult = DialogResult.No;
-
-
-
         }
-
-        private void PictureBox2_Click(object sender, EventArgs e) { }
-        private void Label9_Click(object sender, EventArgs e) { }
-        private void CheckBtn_Click(object sender, EventArgs e)
+        public void CheckBtn_Click(object sender, EventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
+            using (SqlConnection connection = new SqlConnection(MyMethodsLib.GetConnectionString()))
             {
                 connection.Open();
                 SqlCommand cmd = new SqlCommand
@@ -284,8 +248,6 @@ namespace GoDiet
 
         }
 
-        private void Username_TextChanged(object sender, EventArgs e) { }
-
         void ChangeFocus(TextBox name, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -294,32 +256,32 @@ namespace GoDiet
             }
         }
 
-        private void Username_KeyDown(object sender, KeyEventArgs e)
+        public void Username_KeyDown(object sender, KeyEventArgs e)
         {
             ChangeFocus(Password, e);
         }
 
-        private void Password_KeyDown(object sender, KeyEventArgs e)
+        public void Password_KeyDown(object sender, KeyEventArgs e)
         {
             ChangeFocus(passwConf, e);
         }
 
-        private void Surname_KeyDown(object sender, KeyEventArgs e)
+        public void Surname_KeyDown(object sender, KeyEventArgs e)
         {
             ChangeFocus(Height2, e);
         }
 
-        private void Weight_KeyDown(object sender, KeyEventArgs e)
+        public void Weight_KeyDown(object sender, KeyEventArgs e)
         {
             ChangeFocus(Email, e);
         }
 
-        private void Height2_KeyDown(object sender, KeyEventArgs e)
+        public void Height2_KeyDown(object sender, KeyEventArgs e)
         {
             ChangeFocus(Weight, e);
         }
 
-        private void Email_KeyDown(object sender, KeyEventArgs e)
+        public void Email_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -327,42 +289,13 @@ namespace GoDiet
             }
         }
 
-        private void PictureBox1_Click(object sender, EventArgs e) { }
-        private void Panel1_Paint(object sender, PaintEventArgs e) { }
-        private void Label11_Click(object sender, EventArgs e) { }
-        private void GenderBox_SelectedIndexChanged(object sender, EventArgs e) { }
-        private void RadioButton1_CheckedChanged(object sender, EventArgs e) { }
-
-
-        //other methods to be used
-
-        //method to create a .csv file with header
-        public void EnterDateAndUserWeightCsv(string path)
+        private void AgreementLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (!Directory.Exists(path))
-                throw new DirectoryNotFoundException($"Directory not found: {path}");
-
-            string filePath = Path.Combine(path, this.Username.Text.ToLower() + "_weights.csv");
-
-            if (!File.Exists(filePath))
-            {
-                string header = "";
-                header = "DATE" + "," + "WEIGHT\n";
-                File.WriteAllText(filePath, header);
-            }
-            string firstData = "";
-            firstData = DateTime.Now.ToString("yyyy-MM-dd") + "," + this.Weight.Text.ToString() + "\n";
-            File.AppendAllText(filePath, firstData);
-        }
-
-        private void Password_TextChanged(object sender, EventArgs e) { }
-
-        private void AgreementLinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            // you should reinvent the way for a path
-            string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\"));
+            string getPath = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\"));
+            string path = getPath + "DietData";
             string pathToFile = path + "\\End_User_Agreement.pdf";
             Process.Start(pathToFile);
+
         }
     }
 }

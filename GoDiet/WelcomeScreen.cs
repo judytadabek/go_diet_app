@@ -23,365 +23,26 @@ namespace GoDiet
 {
     public partial class WelcomeScreen : Form
     {
-        // str to connect to dbs
-        public string GetConnectionString()
-        {
-            string connection = "";
-            string part = @"Data Source=(LocalDB)\MSSQLLocalDB; AttachDbFilename=";
-            string getPath = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\"));
-            string connectionPath = getPath + "dbs\\GODIETCUSTINFO.MDF";
-            string part2 = ";Integrated Security = True";
-            connection = part + connectionPath + part2;
-            return connection;
-
-        }
-
-        string userOutputToBox = "";
-
-        void ClosePreviousWindow()
-        {
-            InitialWindow.ActiveForm.Close();
-
-        }
-
-
-
-        public bool CallLogisticRegression()
-        {
-            bool dietResult = false;
-
-            string getPath = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\"));
-            string _trainDataPath = getPath + "\\DietData\\DataModel\\trainData\\weight_lr_train1.csv";
-            MLContext mlContext = new MLContext(seed: 0);
-            var model = BinaryClassML.Train(mlContext, _trainDataPath);
-            BinaryClassML.Evaluate(mlContext, model);
-            string weight = weightBox.Text;
-            string height = GetHeightFromDbs(Username).ToString();
-            string bmi = CalculateBMI(weight, height);
-            dietResult = BinaryClassML.Predict(mlContext, model, bmi);
-            return dietResult;
-        }
-
+        
+        void ClosePreviousWindow() => ActiveForm.Close();
         public WelcomeScreen() => InitializeComponent();
-
         string Username = InitialWindow.SetUsername;
 
-        //method to get diet mode:
-        public string GetDietModeFromDbs(string Username)
+        public void WelcomeScreen_Load(object sender, EventArgs e)
         {
-            string mode = "";
-            string curDir = Directory.GetCurrentDirectory();
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
-            {
-                SqlCommand cmd = new SqlCommand
-                {
-                    CommandText = "select DietMode from [tblMeasures] where Username=@Username"
-                };
-                cmd.Parameters.AddWithValue("@Username", Username);
-                cmd.Connection = connection;
-                try
-                {
-                    connection.Open();
-                    SqlDataReader dataReader = cmd.ExecuteReader();
-                    if (dataReader.HasRows)
-                    {
-                        while (dataReader.Read())
-                        {
-                            mode = dataReader.GetString(0);
-
-                        }
-                    }
-                    dataReader.Close();
-                    connection.Close();
-
-                }
-                catch (System.Exception)
-                {
-                    if (connection.State == ConnectionState.Open)
-                        connection.Close();
-                }
-
-            }
-            return mode;
-        }
-
-        //method to get veggie option from DBS
-        public string GetVeggieOptionFromDbs(string Username)
-        {
-            string veggie = "";
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
-            {
-                SqlCommand cmd = new SqlCommand
-                {
-                    CommandText = "select Vegetarian from [tblUserNamePassw] where Username=@Username"
-                };
-                cmd.Parameters.AddWithValue("@Username", Username);
-                cmd.Connection = connection;
-                try
-                {
-                    connection.Open();
-                    SqlDataReader dataReader = cmd.ExecuteReader();
-                    if (dataReader.HasRows)
-                    {
-                        while (dataReader.Read())
-                        {
-                            veggie = dataReader.GetString(0);
-
-                        }
-                    }
-                    dataReader.Close();
-                    connection.Close();
-
-                }
-                catch (System.Exception)
-                {
-                    if (connection.State == ConnectionState.Open)
-                        connection.Close();
-                }
-
-            }
-            return veggie;
-        }
-
-        //method to get weight from dbs
-        public string GetWeightFromDbs(string Username)
-        {
-            string weight = "";
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
-            {
-                SqlCommand cmd = new SqlCommand
-                {
-                    CommandText = "select * from [tblMeasures] where Username=@Username"
-                };
-                cmd.Parameters.AddWithValue("@Username", Username);
-                cmd.Connection = connection;
-                try
-                {
-                    connection.Open();
-                    SqlDataReader dataReader = cmd.ExecuteReader();
-                    if (dataReader.HasRows)
-                    {
-                        while (dataReader.Read())
-                        {
-                            weight = dataReader.GetInt32(3).ToString();
-                        }
-                    }
-                    dataReader.Close();
-                    connection.Close();
-                }
-                catch (System.Exception)
-                {
-                    if (connection.State == ConnectionState.Open)
-                        connection.Close();
-                }
-            }
-            return weight;
-        }
-
-        // method to get gender from dbs
-        public string GetGenderFromDbs(string Username)
-        {
-            string gender = "";
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
-            {
-                SqlCommand cmd = new SqlCommand
-                {
-                    CommandText = "select Gender from [tblUserNamePassw] where Username=@Username"
-                };
-                cmd.Parameters.AddWithValue("@Username", Username);
-                cmd.Connection = connection;
-                try
-                {
-                    connection.Open();
-                    SqlDataReader dataReader = cmd.ExecuteReader();
-                    if (dataReader.HasRows)
-                    {
-                        while (dataReader.Read())
-                        {
-                            gender = dataReader.GetString(0);
-                        }
-                    }
-                    dataReader.Close();
-                    connection.Close();
-                }
-                catch (System.Exception)
-                {
-                    if (connection.State == ConnectionState.Open)
-                        connection.Close();
-                }
-            }
-            return gender;
-        }
-
-        public string GetEmailFromDbs(string Username)
-        {
-            string email = "";
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
-            {
-                SqlCommand cmd = new SqlCommand
-                {
-                    CommandText = "select Email from [tblOtherInfo] where Username=@Username"
-                };
-                cmd.Parameters.AddWithValue("@Username", Username);
-                cmd.Connection = connection;
-                try
-                {
-                    connection.Open();
-                    SqlDataReader dataReader = cmd.ExecuteReader();
-                    if (dataReader.HasRows)
-                    {
-                        while (dataReader.Read())
-                        {
-                            email = dataReader.GetString(0);
-                        }
-                    }
-                    dataReader.Close();
-                    connection.Close();
-                }
-                catch (System.Exception)
-                {
-                    if (connection.State == ConnectionState.Open)
-                        connection.Close();
-                }
-            }
-            return email;
-        }
-
-        // method to set DietMode in dbs
-        private void SetDietModeDbs(string Username, string DietMode)
-        {
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
-            {
-                var Date = DateTime.Now.Date;
-                try
-                {
-                    SqlCommand cmd = new SqlCommand
-                    {
-                        CommandText = "UPDATE[tblMeasures] SET DietMode = @DietMode WHERE UserName = @UserName and Date = @Date"
-                    };
-                    cmd.Parameters.AddWithValue("@Username", Username);
-                    cmd.Parameters.AddWithValue("@Date", Date);
-                    cmd.Parameters.AddWithValue("@DietMode", DietMode);
-                    cmd.Connection = connection;
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
-                    dietModeBox.Text = DietMode;
-                }
-
-                catch (System.Exception)
-                {
-                    if (connection.State == ConnectionState.Open)
-                        connection.Close();
-                }
-            }
-        }
-
-        // method to change user's name
-        private void ChangeUserName(string UserName, string Name)
-        {
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
-            {
-                try
-                {
-                    connection.Open();
-                    SqlCommand cmd = new SqlCommand
-                    {
-                        CommandText = "UPDATE[tblOtherInfo] SET Name = @Name WHERE UserName = @UserName"
-                    };
-                    cmd.Parameters.AddWithValue("@UserName", UserName);
-                    cmd.Parameters.AddWithValue("@Name", Name);
-                    cmd.Connection = connection;
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
-                    MessageBox.Show("Your Name is changed successfully");
-                    nameBox.Text = "";
-                }
-
-                catch (System.Exception)
-                {
-                    MessageBox.Show("Name change sucks.");
-                    if (connection.State == ConnectionState.Open)
-                        connection.Close();
-                }
-
-            }
-        }
-
-        private void ChangeUserSurName(string Username, string Surname)
-        {
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
-            {
-                try
-                {
-                    connection.Open();
-                    SqlCommand cmd = new SqlCommand
-                    {
-                        CommandText = "UPDATE[tblOtherInfo] SET Surname = @Surname WHERE UserName = @UserName"
-                    };
-                    cmd.Parameters.AddWithValue("@Username", Username);
-                    cmd.Parameters.AddWithValue("@Surname", Surname);
-                    cmd.Connection = connection;
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
-                    MessageBox.Show("Your SurName is changed successfully");
-                    surnameBox.Text = "";
-                }
-
-                catch (System.Exception)
-                {
-                    MessageBox.Show("Surname change sucks.");
-                    if (connection.State == ConnectionState.Open)
-                        connection.Close();
-                }
-
-            }
-        }
-
-        private void ChangeEmail(string Username, string Email)
-        {
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
-            {
-
-                try
-                {
-                    connection.Open();
-                    SqlCommand cmd = new SqlCommand
-                    {
-                        CommandText = "UPDATE[tblOtherInfo] SET Email = @Email WHERE UserName = @UserName"
-                    };
-                    cmd.Parameters.AddWithValue("@Username", Username);
-                    cmd.Parameters.AddWithValue("@Email", Email);
-                    cmd.Connection = connection;
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
-                    MessageBox.Show("Your Email is changed successfully");
-                    emailBx.Text = "";
-                }
-
-                catch (System.Exception)
-                {
-                    MessageBox.Show("Email change sucks.");
-                    if (connection.State == ConnectionState.Open)
-                        connection.Close();
-                }
-            }
-
-        }
-
-        private void WelcomeScreen_Load(object sender, EventArgs e)
-        {
+            string con = MyMethodsLib.GetConnectionString();
             unameBox.Text = Username;
-            string height = GetHeightFromDbs(Username).ToString();
-            weightBox.Text = GetWeightFromDbs(Username).ToString();
-            BMIBox.Text = CalculateBMI(this.weightBox.Text.ToString(), height);
-            double kgToLoose = KgToLoose(Username);
-            kgBox.Text = WeightResultOutput(Username, kgToLoose);
-            intakeBox.Text = CaloriesIntake(Username).ToString();
-            dietModeBox.Text = GetDietModeFromDbs(Username);
+            string height = MyMethodsLib.GetHeightFromDbs(Username, con).ToString();
+            weightBox.Text = MyMethodsLib.GetWeightFromDbs(Username, con).ToString();
+            BMIBox.Text = MyMethodsLib.CalculateBMI(this.weightBox.Text.ToString(), height);
+            double kgToLoose = MyMethodsLib.KgToLoose(Username, weightBox.Text);
+            kgBox.Text = MyMethodsLib.WeightResultOutput(Username, kgToLoose, weightBox.Text);
+            intakeBox.Text = MyMethodsLib.CaloriesIntake(Username).ToString();
+            dietModeBox.Text = MyMethodsLib.GetDietModeFromDbs(Username, MyMethodsLib.GetConnectionString());
             SetupCharts4Projection(Username);
         }
 
-        private void RemoveAccountBtn_Click(object sender, EventArgs e)
+        public void RemoveAccountBtn_Click(object sender, EventArgs e)
         {
             int MeasurementNo = 0;
             DialogResult d_res = MessageBox.Show("Are you sure you want to remove your account with all your data?", "Confirm", MessageBoxButtons.YesNo);
@@ -389,7 +50,7 @@ namespace GoDiet
             {
                 //code for implementing data removal functionality
                 using (
-                SqlConnection connection = new SqlConnection(GetConnectionString()))
+                SqlConnection connection = new SqlConnection(MyMethodsLib.GetConnectionString()))
                 {
                     try
                     {
@@ -527,21 +188,7 @@ namespace GoDiet
             }
         }
 
-        private void BackBtn_Click(object sender, EventArgs e) => Close();
-        private void TabPage1_Click(object sender, EventArgs e) { }
-        private void TabPage2_Click(object sender, EventArgs e) { }
-        private void Label1_Click(object sender, EventArgs e) { }
-        private void Label3_Click(object sender, EventArgs e) { }
-        private void RadioButton2_CheckedChanged(object sender, EventArgs e) { }
-        private void TextBox1_TextChanged(object sender, EventArgs e) { }
-        private void Label2_Click_1(object sender, EventArgs e) { }
-        private void GenderBox_SelectedIndexChanged(object sender, EventArgs e) { }
-        private void FlowLayoutPanel1_Paint(object sender, PaintEventArgs e) { }
-        private void TextBox9_TextChanged(object sender, EventArgs e) { }
-        private void TextBox7_TextChanged(object sender, EventArgs e) { }
-        private void UnameBox_TextChanged(object sender, EventArgs e) { }
-        private void IntakeBox_TextChanged(object sender, EventArgs e) { }
-        private void ClearBtn_Click(object sender, EventArgs e)
+        public void ClearBtn_Click(object sender, EventArgs e)
         {
             nameBox.Text = "";
             surnameBox.Text = "";
@@ -561,35 +208,15 @@ namespace GoDiet
             string Gender = GenderBox.Text;
             string Password = oldPasswBox.Text;
             string ModifWeightIn = modifLastWeightIn.Text;
-            if (yesRadioBtn.Checked)
-            {
-                Vegetarian = "Yes";
-            }
-            if (noRadioBtn.Checked)
-            {
-                Vegetarian = "No";
-            }
+            if (yesRadioBtn.Checked){ Vegetarian = "Yes";}
+            if (noRadioBtn.Checked) { Vegetarian = "No"; }
+            string con = MyMethodsLib.GetConnectionString();
+            if (nameBox.Text != "") { MyMethodsLib.ChangeUserName(Username, nameBox.Text, con); nameBox.Text = ""; }
+            if (surnameBox.Text != "") { MyMethodsLib.ChangeUserSurName(Username, surnameBox.Text, con); surnameBox.Text = ""; }
 
-            if (nameBox.Text != "")
+            if (emailBx.Text != "") { MyMethodsLib.ChangeEmail(Username, emailBx.Text, con); emailBx.Text = ""; }
+            using (SqlConnection sqlConnect = new SqlConnection(MyMethodsLib.GetConnectionString()))
             {
-                ChangeUserName(Username, nameBox.Text);
-            }
-
-            if (surnameBox.Text != "")
-            {
-                ChangeUserSurName(Username, surnameBox.Text);
-            }
-
-            if (emailBx.Text != "")
-            {
-                ChangeEmail(Username, emailBx.Text);
-            }
-
-            using (SqlConnection sqlConnect = new SqlConnection(GetConnectionString()))
-            {
-
-
-                // code to update vegetarian option
                 if (Vegetarian != "")
                 {
                     try
@@ -718,24 +345,25 @@ namespace GoDiet
                         var Date = DateTime.Now.Date;
                         SqlCommand cmdUpdateWeight = new SqlCommand
                         {
-                            CommandText = "SELECT * from [tblMeasures] WHERE UserName=@UserName AND Date=@Date"
+                            CommandText = "SELECT Date from [tblMeasures] WHERE UserName=@UserName AND Date=@Date"
                         };
                         cmdUpdateWeight.Parameters.AddWithValue("@Username", Username);
                         cmdUpdateWeight.Parameters.AddWithValue("@Weight", ModifWeightIn);
                         cmdUpdateWeight.Parameters.AddWithValue("@Date", Date);
                         cmdUpdateWeight.Connection = sqlConnect;
                         string dateFromDbs = "";
-
+                        
                         SqlCommand sqlCmdUpdateWeight = new SqlCommand();
+                        sqlConnect.Open();
                         try
                         {
-                            sqlConnect.Open();
+                            
                             SqlDataReader dataReader = cmdUpdateWeight.ExecuteReader();
                             if (dataReader.HasRows)
                             {
                                 while (dataReader.Read())
                                 {
-                                    dateFromDbs = dataReader.GetDateTime(4).Date.ToString();
+                                    dateFromDbs = dataReader.GetDateTime(0).Date.ToString();
                                 }
                                 dataReader.Close();
                                 if (dateFromDbs == Date.ToString())
@@ -750,8 +378,9 @@ namespace GoDiet
                                         sqlCmdUpdateWeight.ExecuteNonQuery();
                                         sqlConnect.Close();
                                         weightBox.Text = ModifWeightIn;
-                                        string height = GetHeightFromDbs(Username).ToString();
-                                        BMIBox.Text = CalculateBMI(ModifWeightIn, height);
+                                        //string con = MyMethodsLib.GetConnectionString();
+                                        string height = MyMethodsLib.GetHeightFromDbs(Username, con).ToString();
+                                        BMIBox.Text = MyMethodsLib.CalculateBMI(ModifWeightIn, height);
 
                                         MessageBox.Show("Today's Weight Input modified successfully!");
                                     }
@@ -781,8 +410,8 @@ namespace GoDiet
                     }
                 }
             }
-            double kgToLoose = KgToLoose(Username);
-            kgBox.Text = WeightResultOutput(Username, kgToLoose);
+            double kgToLoose = MyMethodsLib.KgToLoose(Username, weightBox.Text);
+            kgBox.Text = MyMethodsLib.WeightResultOutput(Username, kgToLoose, weightBox.Text);
 
             nameBox.Text = "";
             surnameBox.Text = "";
@@ -792,55 +421,19 @@ namespace GoDiet
 
         }
 
-        public int GetMeasurementNoWithTodayDate(string Username)
-        {
-            int MeasurementNo = 0;
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
-            {
-                var Date = DateTime.Now.Date;
-                SqlCommand cmd = new SqlCommand
-                {
-                    CommandText = "select MeasurementNo from [tblMeasures] where Username=@Username AND Date=@Date"
-                };
-                cmd.Parameters.AddWithValue("@Username", Username);
-                cmd.Parameters.AddWithValue("@Date", Date);
-                cmd.Connection = connection;
-                try
-                {
-                    connection.Open();
-                    SqlDataReader dataReader = cmd.ExecuteReader();
-
-                    if (dataReader.HasRows)
-                    {
-                        while (dataReader.Read())
-                        {
-                            MeasurementNo = dataReader.GetInt32(0);
-                        }
-                        dataReader.Close();
-                        connection.Close();
-                    }
-                }
-                catch (System.Exception)
-                {
-                    MessageBox.Show("Oh no, more work to do !");
-                    connection.Close();
-                }
-            }
-            return MeasurementNo;
-        }
-    
         public void Button1_Click(object sender, EventArgs e)
         {
-            int MeasurementNo = GetMeasurementNoWithTodayDate(Username);
+            string con = MyMethodsLib.GetConnectionString();
+            int MeasurementNo = MyMethodsLib.GetMeasurementNoWithTodayDate(Username, con);
 
             var today2 = DateTime.Now.Date;
             var tomorrow2 = today2.AddDays(1);
 
-            var dateForMealFromDbs2 = GetMealDate(MeasurementNo);
+            var dateForMealFromDbs2 = MyMethodsLib.GetMealDate(MeasurementNo, con);
             if (tomorrow2 != dateForMealFromDbs2)
             {
                 string mode = "";
-                string kgToLoose = WeightResultOutput(Username, KgToLoose(Username));
+                string kgToLoose = MyMethodsLib.WeightResultOutput(Username, MyMethodsLib.KgToLoose(Username, weightBox.Text), weightBox.Text);
                 if (kgToLoose != "0")
                 {
                     if (slowModeRadioBtn.Checked)
@@ -866,7 +459,7 @@ namespace GoDiet
                     mode = "Not set";
                     MessageBox.Show("We cannot help you as Your Weight is perfectly fine!");
                 }
-                using (SqlConnection connection = new SqlConnection(GetConnectionString()))
+                using (SqlConnection connection = new SqlConnection(MyMethodsLib.GetConnectionString()))
                 {
                     try
                     {
@@ -885,7 +478,7 @@ namespace GoDiet
                         MessageBox.Show("Your Diet Mode is set!");
                         if (DietMode != "Not set")
                         {
-                            intakeBox.Text = CaloriesIntake(Username).ToString();
+                            intakeBox.Text = MyMethodsLib.CaloriesIntake(Username).ToString();
                         }
                         else
                         {
@@ -915,250 +508,40 @@ namespace GoDiet
             //SO REMEMBER TO CHECK IT
             var today = DateTime.Now.Date;
             var tomorrow = today.AddDays(1);
-
-            var dateForMealFromDbs = GetMealDate(MeasurementNo);
+            var dateForMealFromDbs = MyMethodsLib.GetMealDate(MeasurementNo, con);
             if (tomorrow == dateForMealFromDbs)
             {
                 MessageBox.Show("You can't change diet mode today, try tomorrow!");
             }
             else
             {
-                var randomRecipes = RandomizeRecipesSelection(CaloriesIntake(Username).ToString(), GetVeggieOptionFromDbs(Username), path, breakJsonName, break2JsonName, lunchJsonName, dinnerJsonName);
-                RecordRecipesToDbs(randomRecipes, MeasurementNo);
-                int breakID = GetBreakfastID(MeasurementNo);
-                int break2ID = GetBreakfast2ID(MeasurementNo);
-                int lunchID = GetLunchID(MeasurementNo);
-                int dinnerID = GetLunchID(MeasurementNo);
+
+                var randomRecipes = MyMethodsLib.RandomizeRecipesSelection(MyMethodsLib.CaloriesIntake(Username).ToString(), MyMethodsLib.
+                    GetVeggieOptionFromDbs(Username, con), path, breakJsonName, break2JsonName, lunchJsonName, dinnerJsonName);
+                MyMethodsLib.RecordRecipesToDbs(randomRecipes, MeasurementNo, con);
+                int breakID = MyMethodsLib.GetBreakfastID(MeasurementNo, con);
+                int break2ID = MyMethodsLib.GetBreakfast2ID(MeasurementNo, con);
+                int lunchID = MyMethodsLib.GetLunchID(MeasurementNo, con);
+                int dinnerID = MyMethodsLib.GetDinnerID(MeasurementNo, con);
                 string break2RTFName = Username + "_" + tomorrow.ToString("ddMMyyyy") + "_breakfast2.rtf";
                 string breakRTFName = Username + "_" + tomorrow.ToString("ddMMyyyy") + "_breakfast.rtf";
                 string lunchRTFName = Username + "_" + tomorrow.ToString("ddMMyyyy") + "_lunch.rtf";
                 string dinnerRTFName = Username + "_" + tomorrow.ToString("ddMMyyyy") + "_dinner.rtf";
                 //breakfast
-                SetUpRecipe(path, breakJsonName, breakID, tomorrow, breakRTFName);
+                MyMethodsLib.SetUpRecipe(path, breakJsonName, breakID, tomorrow, breakRTFName);
                 //breakfast2
-                SetUpRecipe(path, break2JsonName, break2ID, tomorrow, break2RTFName);
+                MyMethodsLib.SetUpRecipe(path, break2JsonName, break2ID, tomorrow, break2RTFName);
                 //lunch
-                SetUpRecipe(path, lunchJsonName, lunchID, tomorrow, lunchRTFName);
+                MyMethodsLib.SetUpRecipe(path, lunchJsonName, lunchID, tomorrow, lunchRTFName);
                 //dinner
-                SetUpRecipe(path, dinnerJsonName, dinnerID, tomorrow, dinnerRTFName);
+                MyMethodsLib.SetUpRecipe(path, dinnerJsonName, dinnerID, tomorrow, dinnerRTFName);
                 //MessageBox.Show("Your Diet Mode is selected!");
             }
         }
 
-        public DateTime GetMealDate(int MeasurementNo)
-        {
-            DateTime mealDate = new DateTime().Date;
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
-            {
-                SqlCommand cmd = new SqlCommand
-                {
-                    CommandText = "select Date4Meal from [tblDailyMealSet] where MeasurementNo=@MeasurementNo"
-                };
-                cmd.Parameters.AddWithValue("@MeasurementNo", MeasurementNo);
-                cmd.Connection = connection;
-                try
-                {
-                    connection.Open();
-                    SqlDataReader dataReader = cmd.ExecuteReader();
-                    if (dataReader.HasRows)
-                    {
-                        while (dataReader.Read())
-                        {
-                            mealDate = dataReader.GetDateTime(0);
-                        }
-                    }
-
-                    dataReader.Close();
-                    connection.Close();
-                }
-                catch (System.Exception)
-                {
-                    if (connection.State == ConnectionState.Open)
-                        connection.Close();
-                }
-            }
-            return mealDate;
-        }
-
-        public int GetBreakfastID(int MeasurementNo)
-        {
-            int breakID = -1;
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
-            {
-                SqlCommand cmd = new SqlCommand
-                {
-                    CommandText = "select BreakfastID from [tblDailyMealSet] where MeasurementNo=@MeasurementNo"
-                };
-                cmd.Parameters.AddWithValue("@MeasurementNo", MeasurementNo);
-                cmd.Connection = connection;
-                try
-                {
-                    connection.Open();
-                    SqlDataReader dataReader = cmd.ExecuteReader();
-                    if (dataReader.HasRows)
-                    {
-                        while (dataReader.Read())
-                        {
-                            breakID = dataReader.GetInt32(0);
-                        }
-                    }
-
-                    dataReader.Close();
-                    connection.Close();
-                }
-                catch (System.Exception)
-                {
-                    if (connection.State == ConnectionState.Open)
-                        connection.Close();
-                }
-            }
-            return breakID;
-        }
-
-        public int GetBreakfast2ID(int MeasurementNo)
-        {
-            int break2ID = -1;
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
-            {
-                SqlCommand cmd = new SqlCommand
-                {
-                    CommandText = "select Breakfast2ID from [tblDailyMealSet] where MeasurementNo=@MeasurementNo"
-                };
-                cmd.Parameters.AddWithValue("@MeasurementNo", MeasurementNo);
-                cmd.Connection = connection;
-                try
-                {
-                    connection.Open();
-                    SqlDataReader dataReader = cmd.ExecuteReader();
-                    if (dataReader.HasRows)
-                    {
-                        while (dataReader.Read())
-                        {
-                            break2ID = dataReader.GetInt32(0);
-                        }
-                    }
-
-                    dataReader.Close();
-                    connection.Close();
-                }
-                catch (System.Exception)
-                {
-                    if (connection.State == ConnectionState.Open)
-                        connection.Close();
-                }
-            }
-            return break2ID;
-
-        }
-
-        public int GetLunchID(int MeasurementNo)
-        {
-            int lunchID = -1;
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
-            {
-                SqlCommand cmd = new SqlCommand
-                {
-                    CommandText = "select LunchID from [tblDailyMealSet] where MeasurementNo=@MeasurementNo"
-                };
-                cmd.Parameters.AddWithValue("@MeasurementNo", MeasurementNo);
-                cmd.Connection = connection;
-                try
-                {
-                    connection.Open();
-                    SqlDataReader dataReader = cmd.ExecuteReader();
-                    if (dataReader.HasRows)
-                    {
-                        while (dataReader.Read())
-                        {
-                            lunchID = dataReader.GetInt32(0);
-                        }
-                    }
-
-                    dataReader.Close();
-                    connection.Close();
-                }
-                catch (System.Exception)
-                {
-                    if (connection.State == ConnectionState.Open)
-                        connection.Close();
-                }
-            }
-            return lunchID;
-        }
-
-        public int GetDinnerID(int MeasurementNo)
-        {
-            int dinnerID = -1;
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
-            {
-                SqlCommand cmd = new SqlCommand
-                {
-                    CommandText = "select DinnerID from [tblDailyMealSet] where MeasurementNo=@MeasurementNo"
-                };
-                cmd.Parameters.AddWithValue("@MeasurementNo", MeasurementNo);
-                cmd.Connection = connection;
-                try
-                {
-                    connection.Open();
-                    SqlDataReader dataReader = cmd.ExecuteReader();
-                    if (dataReader.HasRows)
-                    {
-                        while (dataReader.Read())
-                        {
-                            dinnerID = dataReader.GetInt32(0);
-                        }
-                    }
-
-                    dataReader.Close();
-                    connection.Close();
-                }
-                catch (System.Exception)
-                {
-                    if (connection.State == ConnectionState.Open)
-                        connection.Close();
-                }
-            }
-            return dinnerID;
-        }
-
-        public int GetCaloriesToConsume(int MeasurementNo)
-        {
-            int calories = -1;
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
-            {
-                SqlCommand cmd = new SqlCommand
-                {
-                    CommandText = "select TotalCaloriesNo from [tblDailyMealSet] where MeasurementNo=@MeasurementNo"
-                };
-                cmd.Parameters.AddWithValue("@MeasurementNo", MeasurementNo);
-                cmd.Connection = connection;
-                try
-                {
-                    connection.Open();
-                    SqlDataReader dataReader = cmd.ExecuteReader();
-                    if (dataReader.HasRows)
-                    {
-                        while (dataReader.Read())
-                        {
-                            calories = dataReader.GetInt32(0);
-                        }
-                    }
-
-                    dataReader.Close();
-                    connection.Close();
-                }
-                catch (System.Exception)
-                {
-                    if (connection.State == ConnectionState.Open)
-                        connection.Close();
-                }
-            }
-            return calories;
-        }
-
         public void Button2_Click(object sender, EventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
+            using (SqlConnection connection = new SqlConnection(MyMethodsLib.GetConnectionString()))
             {
                 string dailyWeight = dayWeightBox.Text.ToString();
 
@@ -1252,7 +635,7 @@ namespace GoDiet
                                         weightBox.Text = Weight.ToString();
                                         dayWeightBox.Clear();
                                         connection.Close();
-                                        string bmi = CalculateBMI(Weight.ToString(), Height.ToString());
+                                        string bmi = MyMethodsLib.CalculateBMI(Weight.ToString(), Height.ToString());
                                         BMIBox.Text = bmi;
 
                                         MessageBox.Show("Your Today's Weight has been recorded in database!");
@@ -1283,7 +666,7 @@ namespace GoDiet
                 }
             }
 
-            kgBox.Text = WeightResultOutput(Username, KgToLoose(Username));
+            kgBox.Text = MyMethodsLib.WeightResultOutput(Username, MyMethodsLib.KgToLoose(Username, weightBox.Text), weightBox.Text);
 
 
             SetupCharts4Projection(Username);
@@ -1335,41 +718,27 @@ namespace GoDiet
 
         }
 
-        private void PredictedProgressWeightLossLbl_Click(object sender, EventArgs e) { }
-        private void WeightBox_TextChanged(object sender, EventArgs e) { }
-        private void CurrentLossChart_Click(object sender, EventArgs e) { }
-        private void Button1_Click_1(object sender, EventArgs e) { }
-        private void BMIBox_TextChanged(object sender, EventArgs e)
+        public void BMIBox_TextChanged(object sender, EventArgs e)
         {
-            string height = GetHeightFromDbs(Username).ToString();
-            this.BMIBox.Text = CalculateBMI(this.weightBox.Text.ToString(), height);
+            string con = MyMethodsLib.GetConnectionString();
+            string height = MyMethodsLib.GetHeightFromDbs(Username, con).ToString();
+            this.BMIBox.Text = MyMethodsLib.CalculateBMI(this.weightBox.Text.ToString(), height);
             this.WeightResultBox.Text = "Press";
             double.TryParse(this.BMIBox.Text, out double valToCompare);
             if (valToCompare < 24.9)
             {
                 dietModeBox.Text = "Not set";
-                SetDietModeDbs(Username, dietModeBox.Text);
+                string dietModeBoxToBeSet = MyMethodsLib.SetDietModeDbs(Username, dietModeBox.Text, con);
+                dietModeBox.Text = dietModeBoxToBeSet;
                 intakeBox.Text = "0";
             }
         }
 
-        private void PredictedBtnRefresh_Click(object sender, EventArgs e) { }
-
-        ///* this method is to be used within another method
-        public string CalculateBMI(string weight, string height)
+        public void WeightResultBtn_Click(object sender, EventArgs e)
         {
-            string bmi;
-            float floatWeight = float.Parse(weight);
-            float floatHeight = float.Parse(height);
-            float floatBMI = floatWeight / (floatHeight / 100 * floatHeight / 100);
-            bmi = floatBMI.ToString();
-            return bmi;
-        }
-
-        private void TextBox1_TextChanged_1(object sender, EventArgs e) { }
-        private void WeightResultBtn_Click(object sender, EventArgs e)
-        {
-            bool dietResult = CallLogisticRegression();
+            string getPath = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\"));
+            string _trainDataPath = getPath + "\\DietData\\DataModel\\trainData\\weight_lr_train1.csv";
+            bool dietResult = MyMethodsLib.CallLogisticRegression(weightBox.Text, Username,_trainDataPath);
             string inputStrWeightResult = "";
             if (dietResult == true)
             {
@@ -1383,128 +752,7 @@ namespace GoDiet
             WeightResultBox.Text = inputStrWeightResult;
         }
 
-        private void PredictionWeightLoss_Click(object sender, EventArgs e) { }
-        private void SurnameBox_TextChanged(object sender, EventArgs e) { }
-        private void CheckedListBox1_SelectedIndexChanged(object sender, EventArgs e) { }
-        private void CurrentWeightLossLbl_Click(object sender, EventArgs e) { }
-        private void RadioButton2_CheckedChanged_1(object sender, EventArgs e) { }
-        private void RadioButton3_CheckedChanged(object sender, EventArgs e) { }
-        private void Label7_Click(object sender, EventArgs e) { }
-        private void OldPasswBox_TextChanged(object sender, EventArgs e) { }
-        private void Label1_Click_1(object sender, EventArgs e) { }
-        private void TextBox2_TextChanged(object sender, EventArgs e) { }
-
-        //method to calculate the proper weight - 21.7 this is the mean of BMI indicator
-        public double GetProperWeightCalculation(string Username)
-        {
-            double weightDesired = 0;
-            double height = GetHeightFromDbs(Username);
-            double bmiDesired = 21.7;
-            //calculate desired weight
-            weightDesired = (bmiDesired * (height / 100) * (height / 100));
-            return weightDesired;
-        }
-
-        //method to get the height from dbs
-        public int GetHeightFromDbs(string Username)
-        {
-            int heightInt = 0;
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
-            {
-                try
-                {
-                    SqlCommand cmd = new SqlCommand
-                    {
-                        CommandText = "select Height from [tblMeasures] where Username=@Username"
-                    };
-                    cmd.Parameters.AddWithValue("@Username", Username);
-                    cmd.Parameters.AddWithValue("@Height", heightInt);
-                    cmd.Connection = connection;
-                    try
-                    {
-                        connection.Open();
-                        SqlDataReader dataReader = cmd.ExecuteReader();
-                        if (dataReader.HasRows)
-                        {
-                            while (dataReader.Read())
-                            {
-                                heightInt = dataReader.GetInt32(0);
-                            }
-                        }
-                        dataReader.Close();
-                        connection.Close();
-                    }
-                    catch (System.Exception)
-                    {
-                        MessageBox.Show("Something went wrong");
-                    }
-                }
-                catch (System.Exception)
-                {
-                    MessageBox.Show("Connection with database went wrong!");
-                }
-
-            }
-            return heightInt;
-        }
-
-        //method to calculate the kg to loose
-        public double KgToLoose(string Username)
-        {
-            Double.TryParse(weightBox.Text, out double weightCurrent);
-            double weightDesired = GetProperWeightCalculation(Username);
-            double weightToLoose = weightCurrent - weightDesired;
-            return weightToLoose;
-        }
-
-        //method to output the result to the user
-
-        public string WeightResultOutput(string Username, double kgToLoose)
-        {
-            double weightRes = KgToLoose(Username);
-            //string userOutputToBox = "";
-            if (weightRes <= 0)
-            {
-                this.userOutputToBox = "0";
-            }
-            else
-            {
-                this.userOutputToBox = weightRes.ToString("0.##");
-            }
-            return this.userOutputToBox;
-        }
-
-        private void Label8_Click(object sender, EventArgs e) { }
-
-        private void Label2_Click(object sender, EventArgs e) { }
-
-
-        //method to calculate number of days to achieve goal
-        public string DaysToAchieveGoal(string kgToLoose, double ratio)
-        {
-            string daysNo;
-            double.TryParse(kgToLoose, out double kg2L);
-            double days2AchieveGoal = kg2L / ratio + 1;
-            int days = (int)Math.Round(days2AchieveGoal);
-
-            return days >= 0 ? (daysNo = days.ToString()) : "N/A";
-
-        }
-
-        //method to calculate weeks (7) or months (30)
-        public string TimeToAchieveGoal(string days, int noOfDaysInWeekOrMonths)
-        {
-            string timeUnit;
-            int.TryParse(days, out int daysInt);
-            double timeDbl = daysInt / noOfDaysInWeekOrMonths;
-            decimal timeDec = (decimal)Math.Round(timeDbl, 1);
-
-
-            return timeUnit = timeDec.ToString();
-
-        }
-
-        private void RefreshGraphsBtn_Click(object sender, EventArgs e)
+        public void RefreshGraphsBtn_Click(object sender, EventArgs e)
         {
             //methods to refresh charts and data included in it
             SetupCharts4Projection(Username);
@@ -1556,384 +804,26 @@ namespace GoDiet
 
         }
 
-        private void SetupCharts4Projection(string Username)
+        public void SetupCharts4Projection(string Username)
         {
-            double weightToLoose = KgToLoose(Username);
-            string slowDays = DaysToAchieveGoal(weightToLoose.ToString(), 0.1);
-            string steadyDays = DaysToAchieveGoal(weightToLoose.ToString(), 0.2);
-            string intenseDays = DaysToAchieveGoal(weightToLoose.ToString(), 0.3);
+            double weightToLoose = MyMethodsLib.KgToLoose(Username, weightBox.Text);
+            string slowDays = MyMethodsLib.DaysToAchieveGoal(weightToLoose.ToString(), 0.1);
+            string steadyDays = MyMethodsLib.DaysToAchieveGoal(weightToLoose.ToString(), 0.2);
+            string intenseDays = MyMethodsLib.DaysToAchieveGoal(weightToLoose.ToString(), 0.3);
             slowModeBox.Text = slowDays;
-            slowWeeksBox.Text = TimeToAchieveGoal(slowDays, 7);
-            slowMonthsBox.Text = TimeToAchieveGoal(slowDays, 30);
+            slowWeeksBox.Text = MyMethodsLib.TimeToAchieveGoal(slowDays, 7);
+            slowMonthsBox.Text = MyMethodsLib.TimeToAchieveGoal(slowDays, 30);
 
             steadyModeBox.Text = steadyDays;
-            steadyWeeksBox.Text = TimeToAchieveGoal(steadyDays, 7);
-            steadyMonthsBox.Text = TimeToAchieveGoal(steadyDays, 30);
+            steadyWeeksBox.Text = MyMethodsLib.TimeToAchieveGoal(steadyDays, 7);
+            steadyMonthsBox.Text = MyMethodsLib.TimeToAchieveGoal(steadyDays, 30);
 
             intenseModeBox.Text = intenseDays;
-            intenseWeeksBox.Text = TimeToAchieveGoal(intenseDays, 7);
-            intenseMonthsBox.Text = TimeToAchieveGoal(intenseDays, 30);
+            intenseWeeksBox.Text = MyMethodsLib.TimeToAchieveGoal(intenseDays, 7);
+            intenseMonthsBox.Text = MyMethodsLib.TimeToAchieveGoal(intenseDays, 30);
         }
 
-        private void DayWeightBox_TextChanged(object sender, EventArgs e) { }
-
-        private void Chart1_Click(object sender, EventArgs e) { }
-
-        //number of calories to eat daily associated with the diet model chosen
-        public int CaloriesIntake(string Username)
-        {
-            int calories = 0;
-            string dietMode = GetDietModeFromDbs(Username);
-            string gender = GetGenderFromDbs(Username);
-
-            //MAN
-            //fast pace: 1500 - 1600
-            //medium pace: 1600 - 1800
-            //slow pace: 1800 - 2000
-            if (gender == "Male")
-            {
-                if (dietMode.ToLower() == "not set" || dietMode == "")
-                {
-                    calories = 0;
-                }
-                else if (dietMode == "M: Slow")
-                {
-                    calories = 2000;
-                }
-                else if (dietMode == "M: Steady")
-                {
-                    calories = 1800;
-                }
-                else if (dietMode == "M: Intense")
-                {
-                    calories = 1600;
-                }
-                else
-                {
-                    MessageBox.Show("Something went wrong??");
-
-                }
-            }
-
-            //WOMAN
-            ////fast pace: 1200 - 1450 daily
-            //medium pace: 1450 - 1750
-            //slow pace: 1750 - 1900
-            else if (gender == "Female")
-            {
-                if (dietMode.ToLower() == "not set" || dietMode == "")
-                {
-                    calories = 0;
-                }
-                else if (dietMode == "M: Slow")
-                {
-                    calories = 1900;
-                }
-                else if (dietMode == "M: Steady")
-                {
-                    calories = 1750;
-                }
-                else if (dietMode == "M: Intense")
-                {
-                    calories = 1450;
-                }
-                else
-                {
-                    MessageBox.Show("Something went wrong??");
-
-                }
-            }
-            else
-            {
-                MessageBox.Show("Oppps... Something wrong.");
-            }
-            return calories;
-        }
-
-        //method to read recipes from the json file
-        //to see if it works, output it to the console?
-        public List<Item> LoadJson(string path, string jsonName)
-        {
-            string fullPath = Path.Combine(path, jsonName);
-            List<Item> items = new List<Item>();
-            using (StreamReader r = new StreamReader(fullPath))
-            {
-                string json = r.ReadToEnd();
-                items = JsonConvert.DeserializeObject<List<Item>>(json);
-            }
-            return items;
-        }
-
-        public class Item
-        {
-            public int ID;
-            public string Name;
-            public int CaloriesNo;
-            public string Description;
-            public string VeggieOption;
-            public string Ingredients;
-            public int Gram;
-            public int Proteins;
-            public int Carbons;
-            public int Fats;
-        }
-
-        //method to randomize recipes within a scale
-        public JsonTextReader GetJsonContent(string path, string jsonName)
-        {
-            string fullPath = Path.Combine(path, jsonName);
-            JsonTextReader reader = new JsonTextReader(new StringReader(fullPath));
-            return reader;
-        }
-
-
-        public List<int> RandomizeRecipesSelection(string caloriesIntake, string veggieOption, string path, string breakJsonName,
-            string break2JsonName, string lunchJsonName, string dinnerJsonName)
-        {
-            var breakfastRecipesJsonContent = LoadJson(path, breakJsonName);
-            var break2RecipesJsonContent = LoadJson(path, break2JsonName);
-            var lunchRecipesJsonContent = LoadJson(path, lunchJsonName);
-            var dinnerRecipesJsonContent = LoadJson(path, dinnerJsonName);
-
-            // Dictionary<int, int> idAndCalories = new Dictionary<int, int>();
-
-            //list to store all recipies for breakfast for example
-            List<Dictionary<int, int>> breakRecipes = new List<Dictionary<int, int>>();
-            List<Dictionary<int, int>> break2Recipes = new List<Dictionary<int, int>>();
-            List<Dictionary<int, int>> lunchRecipes = new List<Dictionary<int, int>>();
-            List<Dictionary<int, int>> dinnerRecipes = new List<Dictionary<int, int>>();
-            //we need to get the right recipes based on veggie option
-            if (veggieOption == "Yes")
-            {
-                //use list with ID no and recorded no of calories for randomizing?
-                foreach (Item item in breakfastRecipesJsonContent)
-                {
-                    if (item.VeggieOption == "YES")
-                    {
-                        Dictionary<int, int> tempDict = new Dictionary<int, int>();
-                        tempDict.Add(item.ID, item.CaloriesNo);
-                        breakRecipes.Add(tempDict);
-                    }
-                }
-                foreach (Item item in break2RecipesJsonContent)
-                {
-                    if (item.VeggieOption == "YES")
-                    {
-                        Dictionary<int, int> tempDict = new Dictionary<int, int>();
-                        tempDict.Add(item.ID, item.CaloriesNo);
-                        break2Recipes.Add(tempDict);
-                    }
-                }
-                foreach (Item item in lunchRecipesJsonContent)
-                {
-                    if (item.VeggieOption == "YES")
-                    {
-                        Dictionary<int, int> tempDict = new Dictionary<int, int>();
-                        tempDict.Add(item.ID, item.CaloriesNo);
-                        lunchRecipes.Add(tempDict);
-                    }
-                }
-                foreach (Item item in dinnerRecipesJsonContent)
-                {
-                    if (item.VeggieOption == "YES")
-                    {
-                        Dictionary<int, int> tempDict = new Dictionary<int, int>();
-                        tempDict.Add(item.ID, item.CaloriesNo);
-                        dinnerRecipes.Add(tempDict);
-                    }
-                }
-            }
-            else
-            {
-                foreach (Item item in breakfastRecipesJsonContent)
-                {
-                    Dictionary<int, int> tempDict = new Dictionary<int, int>();
-                    tempDict.Add(item.ID, item.CaloriesNo);
-                    breakRecipes.Add(tempDict);
-                }
-                foreach (Item item in break2RecipesJsonContent)
-                {
-                    Dictionary<int, int> tempDict = new Dictionary<int, int>();
-                    tempDict.Add(item.ID, item.CaloriesNo);
-                    break2Recipes.Add(tempDict);
-                }
-                foreach (Item item in lunchRecipesJsonContent)
-                {
-                    Dictionary<int, int> tempDict = new Dictionary<int, int>();
-                    tempDict.Add(item.ID, item.CaloriesNo);
-                    lunchRecipes.Add(tempDict);
-                }
-                foreach (Item item in dinnerRecipesJsonContent)
-                {
-                    Dictionary<int, int> tempDict = new Dictionary<int, int>();
-                    tempDict.Add(item.ID, item.CaloriesNo);
-                    dinnerRecipes.Add(tempDict);
-                }
-            }
-
-            //ok, we have necessary recipes now, what's next?
-            //we should randomize them yay
-            //get the no of calories
-            //1. pick any from the breakfast list,  get the calories no.
-            // 2. pick another from the breakfast 2 list, get the calories no
-            // 3. pick from the lunch list
-            // 4. pick from the dinner list
-            //sum up calories no, repeat until threshold will be met (+- 50 kcal difference only)
-            //then return the ID numbers for each of the selected recipies
-
-            List<int> recipesSetup = new List<int>();
-            int.TryParse(caloriesIntake, out int kcal);
-            int kcalCalculated = 0;
-            while ((kcalCalculated <= (kcal - 50)) || (kcalCalculated >= (kcal + 20)))
-            {
-
-                recipesSetup.Clear();
-                kcalCalculated = 0;
-                Random rnd = new Random();
-
-                int choice = rnd.Next(breakRecipes.Count());
-                Dictionary<int, int> breakResult = breakRecipes.ElementAt(choice);
-                kcalCalculated = kcalCalculated + breakResult.Values.ElementAt(0);
-
-                choice = rnd.Next(break2Recipes.Count());
-                Dictionary<int, int> break2Res = break2Recipes.ElementAt(choice);
-                kcalCalculated = kcalCalculated + break2Res.Values.ElementAt(0);
-
-                choice = rnd.Next(lunchRecipes.Count());
-                Dictionary<int, int> lunchRes = lunchRecipes.ElementAt(choice);
-                kcalCalculated = kcalCalculated + lunchRes.Values.ElementAt(0);
-
-                choice = rnd.Next(dinnerRecipes.Count());
-                Dictionary<int, int> dinnerRes = dinnerRecipes.ElementAt(choice);
-                kcalCalculated += dinnerRes.Values.ElementAt(dinnerRes.Count() - 1);
-                recipesSetup.Add(breakResult.Keys.ElementAt(0));
-                recipesSetup.Add(break2Res.Keys.ElementAt(0));
-                recipesSetup.Add(lunchRes.Keys.ElementAt(0));
-                recipesSetup.Add(dinnerRes.Keys.ElementAt(0));
-                recipesSetup.Add(kcalCalculated);
-
-            }
-            return recipesSetup;
-        }
-
-        //now, add these recipes to the dbs.
-        //after you will add them, you can attempt to outputting them to the rich text box :)
-        public void RecordRecipesToDbs(List<int> recipesSetup, int MeasurementNo)
-        {
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
-            {
-                //connection.Open();
-                SqlCommand cmdCheckRowsNo = new SqlCommand
-                {
-                    CommandText = "SELECT * FROM [tblDailyMealSet]",
-                    //Connection = connection
-                };
-                cmdCheckRowsNo.Connection = connection;
-                int counter = 0;
-                connection.Open();
-                SqlDataReader dataReader = cmdCheckRowsNo.ExecuteReader();
-                if (dataReader.HasRows)
-                {
-                    while (dataReader.Read())
-                    {
-                        counter++;
-                    }
-                }
-                dataReader.Close();
-
-                var today = DateTime.Now.Date;
-                DateTime tomorrow = today.AddDays(1);
-                int BreakfastID = recipesSetup[0];
-                int Breakfast2ID = recipesSetup[1];
-                int LunchID = recipesSetup[2];
-                int DinnerID = recipesSetup[3];
-                int TotalCaloriesNo = recipesSetup[4];
-                try
-                {
-                    SqlCommand sqlInsertDailyMealSet = new SqlCommand();
-                    sqlInsertDailyMealSet.CommandText = "INSERT INTO [tblDailyMealSet] (MealSetId, MeasurementNo, BreakfastID, Breakfast2ID, LunchID, DinnerID, TotalCaloriesNo, Date4Meal) VALUES (@MealSetId, @MeasurementNo, @BreakfastID, @Breakfast2ID, @LunchID, @DinnerID, @TotalCaloriesNo, @Date4Meal)";
-                    sqlInsertDailyMealSet.Parameters.AddWithValue("MealSetId", counter);
-                    sqlInsertDailyMealSet.Parameters.AddWithValue("@MeasurementNo", MeasurementNo);
-                    sqlInsertDailyMealSet.Parameters.AddWithValue("@BreakfastID", BreakfastID);
-                    sqlInsertDailyMealSet.Parameters.AddWithValue("@Breakfast2ID", Breakfast2ID);
-                    sqlInsertDailyMealSet.Parameters.AddWithValue("@LunchID", LunchID);
-                    sqlInsertDailyMealSet.Parameters.AddWithValue("@DinnerID", DinnerID);
-                    sqlInsertDailyMealSet.Parameters.AddWithValue("@TotalCaloriesNo", TotalCaloriesNo);
-                    sqlInsertDailyMealSet.Parameters.AddWithValue("@Date4Meal", tomorrow);
-                    sqlInsertDailyMealSet.Connection = connection;
-                    sqlInsertDailyMealSet.ExecuteNonQuery();
-                    connection.Close();
-
-                }
-                catch (System.Exception)
-                {
-                    if (connection.State == ConnectionState.Open)
-                        connection.Close();
-                }
-
-            }
-
-        }
-
-        public void SetUpRecipe(string path, string jsonName, int ID, DateTime recipeDate, string RTFFileName)
-        {
-            string name = "";
-            string caloriesNo = "";
-            string description = "";
-            string ingredients = "";
-            string grams = "";
-            string proteins = "";
-            string carbons = "";
-            string fats = "";
-            var jsonContent = LoadJson(path, jsonName);
-            foreach (Item item in jsonContent)
-            {
-                if (item.ID == ID)
-                {
-                    name = item.Name;
-                    caloriesNo = item.CaloriesNo.ToString();
-                    description = item.Description;
-                    ingredients = item.Ingredients;
-                    grams = item.Gram.ToString();
-                    proteins = item.Proteins.ToString();
-                    carbons = item.Carbons.ToString();
-                    fats = item.Fats.ToString();
-                    break;
-                }
-            }
-            FileInfo rtf = new FileInfo(RTFFileName);
-            DocumentCore rtfdoc = new DocumentCore();
-            rtfdoc.Content.Start.Insert(String.Format("RECIPE FOR DAY: \t \t"),
-                new CharacterFormat() { FontName = "Garamont", FontColor = SautinSoft.Document.Color.DarkMagenta, Bold = true, Size = 16 });
-            rtfdoc.Content.End.Insert(String.Format(recipeDate.ToString("dddd, dd MMMM yyyy")), new CharacterFormat() { FontName = "Garamont", FontColor = SautinSoft.Document.Color.DarkMagenta, Italic = true, Bold = true, Size = 14 });
-            rtfdoc.Content.End.Insert(String.Format("\n"));
-            rtfdoc.Content.End.Insert(String.Format("Calories: \t"), new CharacterFormat() { FontName = "Garamont", FontColor = SautinSoft.Document.Color.Red, Bold = true, Size = 9 });
-            rtfdoc.Content.End.Insert(String.Format(caloriesNo), new CharacterFormat() { FontName = "Garamont", FontColor = SautinSoft.Document.Color.Black, Bold = true, Size = 9 });
-            rtfdoc.Content.End.Insert(String.Format(" kcal"), new CharacterFormat() { FontName = "Garamont", FontColor = SautinSoft.Document.Color.Black, Bold = true, Size = 9 });
-            rtfdoc.Content.End.Insert(String.Format("\tGram: \t"), new CharacterFormat() { FontName = "Garamont", FontColor = SautinSoft.Document.Color.Red, Bold = true, Size = 9 });
-            rtfdoc.Content.End.Insert(String.Format(grams), new CharacterFormat() { FontName = "Garamont", FontColor = SautinSoft.Document.Color.Black, Bold = true, Size = 9 });
-            rtfdoc.Content.End.Insert(String.Format(" g"), new CharacterFormat() { FontName = "Garamont", FontColor = SautinSoft.Document.Color.Black, Bold = true, Size = 9 });
-            rtfdoc.Content.End.Insert(String.Format("\tProtein: \t"), new CharacterFormat() { FontName = "Garamont", FontColor = SautinSoft.Document.Color.Red, Bold = true, Size = 9 });
-            rtfdoc.Content.End.Insert(String.Format(proteins), new CharacterFormat() { FontName = "Garamont", FontColor = SautinSoft.Document.Color.Black, Bold = true, Size = 9 });
-            rtfdoc.Content.End.Insert(String.Format(" g"), new CharacterFormat() { FontName = "Garamont", FontColor = SautinSoft.Document.Color.Black, Bold = true, Size = 9 });
-            rtfdoc.Content.End.Insert(String.Format("\tCarbon: \t"), new CharacterFormat() { FontName = "Garamont", FontColor = SautinSoft.Document.Color.Red, Bold = true, Size = 9 });
-            rtfdoc.Content.End.Insert(String.Format(carbons), new CharacterFormat() { FontName = "Garamont", FontColor = SautinSoft.Document.Color.Black, Bold = true, Size = 9 });
-            rtfdoc.Content.End.Insert(String.Format(" g"), new CharacterFormat() { FontName = "Garamont", FontColor = SautinSoft.Document.Color.Black, Bold = true, Size = 9 });
-            rtfdoc.Content.End.Insert(String.Format("\t Fat: \t"), new CharacterFormat() { FontName = "Garamont", FontColor = SautinSoft.Document.Color.Red, Bold = true, Size = 9 });
-            rtfdoc.Content.End.Insert(String.Format(fats), new CharacterFormat() { FontName = "Garamont", FontColor = SautinSoft.Document.Color.Black, Bold = true, Size = 9 });
-            rtfdoc.Content.End.Insert(String.Format(" g"), new CharacterFormat() { FontName = "Garamont", FontColor = SautinSoft.Document.Color.Black, Bold = true, Size = 9 });
-            rtfdoc.Content.End.Insert(String.Format("\n"));
-            rtfdoc.Content.End.Insert(String.Format(name), new CharacterFormat() { FontName = "Garamont", FontColor = SautinSoft.Document.Color.Black, Bold = true, Italic = true, Size = 14, AllCaps = true });
-            rtfdoc.Content.End.Insert(String.Format("\n\nIngredients: \n"), new CharacterFormat() { FontName = "Garamont", FontColor = SautinSoft.Document.Color.Black, Bold = true, Size = 13 });
-            rtfdoc.Content.End.Insert(String.Format(ingredients), new CharacterFormat() { FontName = "Garamont", FontColor = SautinSoft.Document.Color.Black, Italic = true, Size = 12 });
-            rtfdoc.Content.End.Insert(String.Format("\n\nDescription: \n"), new CharacterFormat() { FontName = "Garamont", FontColor = SautinSoft.Document.Color.Black, Bold = true, Size = 13 });
-            rtfdoc.Content.End.Insert(String.Format(description), new CharacterFormat() { FontName = "Garamont", FontColor = SautinSoft.Document.Color.Black, Italic = true, Size = 12 });
-            rtfdoc.Save(rtf.FullName, SaveOptions.RtfDefault);
-
-
-        }
-
-        private void LoadRecipesBtn_Click(object sender, EventArgs e)
+        public void LoadRecipesBtn_Click(object sender, EventArgs e)
         {
             //method to load rtf files into rich text boxes
             var today = DateTime.Now.Date;
@@ -1956,10 +846,10 @@ namespace GoDiet
             }
         }
 
-        private Font fontUsed;
-        private StreamReader reader;
+        public Font fontUsed;
+        public StreamReader reader;
 
-        private void PrintTextFileHandler(object sender, PrintPageEventArgs ppeArgs)
+        public void PrintTextFileHandler(object sender, PrintPageEventArgs ppeArgs)
         {
             //Get the Graphics object  
             Graphics g = ppeArgs.Graphics;
@@ -1993,61 +883,16 @@ namespace GoDiet
             }
         }
 
-        private void printBtn_Click(object sender, EventArgs e)
+        public void printBtn_Click(object sender, EventArgs e)
         {
-            //Font fontUsed;
-            //StreamReader reader;
-            string filecontent = "BREAKFAST\n" + breakfastRichTxtBx.Text + "\n==================================================================\n"
-            + "\n\nBREAKFAST2\n" + break2RichTxtBx.Text.ToString() + "\n==================================================================\n" +
-            "\n\nLUNCH\n" + lunchRichTxtBx.Text.ToString() + "\n==================================================================\n"
-            + "\n\nDINNER \n" + dinnerRichTxtBx.Text.ToString();
-            string tempPath = Environment.CurrentDirectory + "\\temp.txt";
-            System.IO.File.WriteAllText(tempPath, filecontent);
-            reader = new StreamReader(tempPath);
-            fontUsed = new Font("Garamont", 12);
-            PrintDocument pd = new PrintDocument();
-            pd.PrintPage += new PrintPageEventHandler(this.PrintTextFileHandler);
-            pd.Print();
-            if (reader != null)
-            {
-                reader.Close();
-            }
-            System.IO.File.Delete(tempPath);
+
         }
 
-        //how to construct for email
-        public bool SendMail(string MessageBody)
-        {
-            try
-            {
-                Microsoft.Office.Interop.Outlook.Application app = new Microsoft.Office.Interop.Outlook.Application();
-                Microsoft.Office.Interop.Outlook.NameSpace NS = app.GetNamespace("MAPI");
-                Microsoft.Office.Interop.Outlook.MAPIFolder objFolder = NS.GetDefaultFolder(Microsoft.Office.Interop.Outlook.OlDefaultFolders.olFolderOutbox);
-                Microsoft.Office.Interop.Outlook.MailItem objMail = (Microsoft.Office.Interop.Outlook.MailItem)objFolder.Items.Add(Microsoft.Office.Interop.Outlook.OlItemType.olMailItem);
-                //objMail.BodyFormat = Microsoft.Office.Interop.Outlook.OlBodyFormat.olFormatRichText;
-                objMail.BodyFormat = Microsoft.Office.Interop.Outlook.OlBodyFormat.olFormatHTML;
-
-                objMail.Body = MessageBody;
-
-                objMail.Subject = "Your Recipe For Day " + DateTime.Now.Date.AddDays(1).ToString("dd/MM/yyyy");
-                string email = GetEmailFromDbs(Username);
-                objMail.To = email;
-                objMail.CC = "";
-                objMail.Send();
-
-                return true;
-            }
-            catch (System.Exception)
-            {
-                return false;
-            }
-        }
-
-        private void emailBtn_Click(object sender, EventArgs e)
+        public void EmailBtn_Click(object sender, EventArgs e)
         {
             string MessageBody = "BREAKFAST\n" + breakfastRichTxtBx.Text.ToString() + "\n\nBREAKFAST 2\n" + break2RichTxtBx.Text.ToString() + "\n\nLUNCH\n" + lunchRichTxtBx.Text.ToString() +
                     "\n\nDINNER\n" + dinnerRichTxtBx.Text.ToString();
-            bool sentstatus = SendMail(MessageBody);
+            bool sentstatus = MyMethodsLib.SendMail(MessageBody, Username);
             if (sentstatus == true)
             {
                 MessageBox.Show("Email was sent!");
@@ -2058,90 +903,13 @@ namespace GoDiet
             }
         }
 
-        public List<String> GetDatesOfInputWeight(string Username)
-        {
-            List<String> dates = new List<String>();
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
-            {
-                SqlCommand cmd = new SqlCommand
-                {
-                    CommandText = "select Date from [tblMeasures] where Username=@Username"
-                };
-                cmd.Parameters.AddWithValue("@Username", Username);
-                cmd.Connection = connection;
-
-                try
-                {
-                    connection.Open();
-                    SqlDataReader dataReader = cmd.ExecuteReader();
-                    if (dataReader.HasRows)
-                    {
-                        while (dataReader.Read())
-                        {
-                            var date = dataReader.GetDateTime(0).ToString("dd/MM/yyyy");
-                            dates.Add(date);
-
-                        }
-                    }
-                    dataReader.Close();
-                    connection.Close();
-
-                }
-                catch (System.Exception)
-                {
-                    if (connection.State == ConnectionState.Open)
-                        connection.Close();
-                }
-
-            }
-            return dates;
-        }
-
-        public List<int> GetWeightInputs(string Username)
-        {
-            List<int> weightInputs = new List<int>();
-            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
-            {
-                SqlCommand cmd = new SqlCommand
-                {
-                    CommandText = "select Weight from [tblMeasures] where Username=@Username"
-                };
-                cmd.Parameters.AddWithValue("@Username", Username);
-                cmd.Connection = connection;
-
-                try
-                {
-                    connection.Open();
-                    SqlDataReader dataReader = cmd.ExecuteReader();
-                    if (dataReader.HasRows)
-                    {
-                        while (dataReader.Read())
-                        {
-                            //var date = dataReader.GetDateTime(0).ToString("dd/MM/yyyy");
-                            weightInputs.Add(dataReader.GetInt32(0));
-
-                        }
-                    }
-                    dataReader.Close();
-                    connection.Close();
-
-                }
-                catch (System.Exception)
-                {
-                    if (connection.State == ConnectionState.Open)
-                        connection.Close();
-                }
-
-            }
-            return weightInputs;
-
-        }
-
-        private void button1_Click_2(object sender, EventArgs e)
+        public void Button1_Click_2(object sender, EventArgs e)
         {
             //it must be taken from dbs the dates and weights in order to output
-            var dates = GetDatesOfInputWeight(Username);
-            var weightInputs = GetWeightInputs(Username);
+            this.progressChart.Series["Weight"].Points.Clear();
+            string con = MyMethodsLib.GetConnectionString();
+            var dates =  MyMethodsLib.GetDatesOfInputWeight(Username, con);
+            var weightInputs = MyMethodsLib.GetWeightInputs(Username, con);
             int track = 0;
             foreach (String date in dates)
             {
@@ -2152,16 +920,12 @@ namespace GoDiet
             this.progressChart.ChartAreas["ChartArea1"].AxisY.Title = "Your Weight";
         }
 
-        private void PrimaryInformation_SelectedIndexChanged(object sender, EventArgs e) { }
-        private void intenseModeBox_TextChanged(object sender, EventArgs e) { }
-
-        private void intenseModeTab_Click(object sender, EventArgs e) { }
-        private void intenseWeeksBox_TextChanged(object sender, EventArgs e) { }
-        private void intenseMonthsBox_TextChanged(object sender, EventArgs e) { }
-
-        private void button2_Click_1(object sender, EventArgs e)
+        public void Button2_Click_1(object sender, EventArgs e)
         {
             //methods to refresh charts and data included in it
+            this.slowModeChart.Series["Weight"].Points.Clear();
+            this.steadyModeChart.Series["Weight"].Points.Clear();
+            this.intenseModeChart.Series["Weight"].Points.Clear();
             SetupCharts4Projection(Username);
             string currentWeight = weightBox.Text;
             double.TryParse(currentWeight, out double currentWeightDouble);
@@ -2210,7 +974,30 @@ namespace GoDiet
 
         }
 
-        private void breakfastRichTxtBx_TextChanged(object sender, EventArgs e) { }
+        public void printBtn_Click_1(object sender, EventArgs e)
+        {
+            string filecontent = "BREAKFAST\n" + breakfastRichTxtBx.Text + "\n==================================================================\n"
+                + "\n\nBREAKFAST2\n" + break2RichTxtBx.Text.ToString() + "\n==================================================================\n" +
+                "\n\nLUNCH\n" + lunchRichTxtBx.Text.ToString() + "\n==================================================================\n"
+                + "\n\nDINNER \n" + dinnerRichTxtBx.Text.ToString();
+            string tempPath = Environment.CurrentDirectory + "\\temp.txt";
+            System.IO.File.WriteAllText(tempPath, filecontent);
+            reader = new StreamReader(tempPath);
+            fontUsed = new Font("Garamont", 12);
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += new PrintPageEventHandler(this.PrintTextFileHandler);
+            pd.Print();
+            if (reader != null)
+            {
+                reader.Close();
+            }
+            System.IO.File.Delete(tempPath);
+        }
+
+        private void slowModeBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

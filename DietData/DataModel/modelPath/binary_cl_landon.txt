@@ -1,0 +1,809 @@
+===============================================
+Binary Classification Algorithm Data Record
+===============================================
+First Data Record on 3/30/2019 5:13:46 PM ................
+
+
+
+
+
+
+
+
+
+
+3/30/2019 5:29:38 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 90.00%
+Auc: 80.92%
+F1Score: 93.75%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietv2\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8036678 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+3/30/2019 5:29:38 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 90.00%
+Auc: 80.92%
+F1Score: 93.75%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietv2\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8036678 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+
+
+
+3/30/2019 5:32:36 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 90.00%
+Auc: 80.92%
+F1Score: 93.75%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietv2\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8036678 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+3/30/2019 5:32:36 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 90.00%
+Auc: 80.92%
+F1Score: 93.75%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietv2\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8036678 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+
+
+
+3/31/2019 12:57:46 AM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 90.00%
+Auc: 80.92%
+F1Score: 93.75%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietv2\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8036678 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+3/31/2019 12:57:47 AM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 90.00%
+Auc: 80.92%
+F1Score: 93.75%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietv2\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8036678 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+
+
+
+3/31/2019 1:43:45 AM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 90.00%
+Auc: 80.92%
+F1Score: 93.75%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietv2\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8036678 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+3/31/2019 1:43:45 AM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 90.00%
+Auc: 80.92%
+F1Score: 93.75%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietv2\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8036678 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+
+
+
+3/31/2019 5:53:17 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 90.00%
+Auc: 80.92%
+F1Score: 93.75%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietv2\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8036678 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+3/31/2019 5:53:17 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 90.00%
+Auc: 80.92%
+F1Score: 93.75%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietv2\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8036678 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+
+
+
+3/31/2019 7:30:50 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 90.00%
+Auc: 80.92%
+F1Score: 93.75%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietv2\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8036678 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+3/31/2019 7:30:51 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 90.00%
+Auc: 80.92%
+F1Score: 93.75%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietv2\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8036678 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4/18/2019 9:29:17 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 89.11%
+Auc: 80.60%
+F1Score: 93.17%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietVersions\GoDietv3\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8038675 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+4/18/2019 9:29:19 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 89.11%
+Auc: 80.60%
+F1Score: 93.17%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietVersions\GoDietv3\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8038675 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+
+
+
+4/18/2019 9:36:02 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 89.11%
+Auc: 80.60%
+F1Score: 93.17%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietVersions\GoDietv3\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8038675 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+4/18/2019 9:36:05 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 89.11%
+Auc: 80.60%
+F1Score: 93.17%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietVersions\GoDietv3\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8038675 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+
+
+
+4/18/2019 9:47:35 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 89.11%
+Auc: 80.60%
+F1Score: 93.17%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietVersions\GoDietv3\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8038675 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+4/18/2019 9:47:37 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 89.11%
+Auc: 80.60%
+F1Score: 93.17%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietVersions\GoDietv3\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8038675 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+
+
+
+4/18/2019 9:53:20 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 89.11%
+Auc: 80.60%
+F1Score: 93.17%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietVersions\GoDietv3\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8038675 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+4/18/2019 9:53:23 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 89.11%
+Auc: 80.60%
+F1Score: 93.17%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietVersions\GoDietv3\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8038675 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+
+
+
+4/18/2019 9:56:27 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 89.11%
+Auc: 80.60%
+F1Score: 93.17%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietVersions\GoDietv3\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8038675 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+4/18/2019 9:56:29 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 89.11%
+Auc: 80.60%
+F1Score: 93.17%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietVersions\GoDietv3\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8038675 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+
+
+
+4/18/2019 11:00:25 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 89.11%
+Auc: 80.60%
+F1Score: 93.17%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietVersions\GoDietv3\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8038675 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+4/18/2019 11:00:27 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 89.11%
+Auc: 80.60%
+F1Score: 93.17%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietVersions\GoDietv3\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8038675 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+
+
+
+
+
+4/18/2019 11:15:20 PM
+ =============== Create and Train the Model =============== 
+
+
+4/18/2019 11:15:21 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 89.11%
+Auc: 80.60%
+F1Score: 93.17%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietVersions\GoDietv3\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+4/18/2019 11:15:21 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+
+
+4/18/2019 11:16:03 PM
+ =============== Create and Train the Model =============== 
+
+
+4/18/2019 11:16:03 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 89.11%
+Auc: 80.60%
+F1Score: 93.17%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietVersions\GoDietv3\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+4/18/2019 11:16:04 PM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4/24/2019 3:22:39 AM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 89.11%
+Auc: 80.60%
+F1Score: 93.17%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietVersions\GoDietv3\GoDiet\\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8038675 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+4/24/2019 3:22:40 AM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 89.11%
+Auc: 80.60%
+F1Score: 93.17%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietVersions\GoDietv3\GoDiet\\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8038675 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+
+4/24/2019 3:26:25 AM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 89.11%
+Auc: 80.60%
+F1Score: 93.17%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietVersions\GoDietv3\GoDiet\\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8038675 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+4/24/2019 3:26:27 AM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 89.11%
+Auc: 80.60%
+F1Score: 93.17%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietVersions\GoDietv3\GoDiet\\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8038675 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+
+4/24/2019 3:27:29 AM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 89.11%
+Auc: 80.60%
+F1Score: 93.17%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietVersions\GoDietv3\GoDiet\\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8038675 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
+4/24/2019 3:27:31 AM
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 89.11%
+Auc: 80.60%
+F1Score: 93.17%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietVersions\GoDietv3\GoDiet\\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: ∞ | Prediction: 1 | Probability: 0.8038675 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+

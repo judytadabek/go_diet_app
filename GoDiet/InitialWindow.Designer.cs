@@ -5,7 +5,7 @@
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        public System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -26,7 +26,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InitialWindow));
             this.UsernameLogin = new System.Windows.Forms.TextBox();
@@ -53,7 +53,7 @@
             this.UsernameLogin.Name = "UsernameLogin";
             this.UsernameLogin.Size = new System.Drawing.Size(154, 22);
             this.UsernameLogin.TabIndex = 0;
-            this.UsernameLogin.TextChanged += new System.EventHandler(this.UserLabel_TextChanged);
+            this.UsernameLogin.TextChanged += new System.EventHandler(this.UsernameLogin_TextChanged);
             this.UsernameLogin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UsernameLogin_KeyDown);
             // 
             // PasswLogin
@@ -64,7 +64,6 @@
             this.PasswLogin.Size = new System.Drawing.Size(155, 22);
             this.PasswLogin.TabIndex = 1;
             this.PasswLogin.UseSystemPasswordChar = true;
-            this.PasswLogin.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             this.PasswLogin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PasswLogin_KeyDown);
             // 
             // SignIn
@@ -95,7 +94,6 @@
             this.label1.Size = new System.Drawing.Size(73, 23);
             this.label1.TabIndex = 3;
             this.label1.Text = "Username";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -106,7 +104,6 @@
             this.label2.Size = new System.Drawing.Size(72, 23);
             this.label2.TabIndex = 4;
             this.label2.Text = "Password";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // pictureBox1
             // 
@@ -116,7 +113,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(300, 400);
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictureBox2
             // 
@@ -170,7 +166,6 @@
             this.richTextBox1.Size = new System.Drawing.Size(177, 81);
             this.richTextBox1.TabIndex = 9;
             this.richTextBox1.Text = "GoDiet";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // InitialWindow
             // 
@@ -191,7 +186,6 @@
             this.Controls.Add(this.UsernameLogin);
             this.Name = "InitialWindow";
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -202,15 +196,15 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox UsernameLogin;
-        private System.Windows.Forms.TextBox PasswLogin;
-        private System.Windows.Forms.Button SignIn;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Button SignUpButton;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        public System.Windows.Forms.TextBox UsernameLogin;
+        public System.Windows.Forms.TextBox PasswLogin;
+        public System.Windows.Forms.Button SignIn;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.PictureBox pictureBox2;
+        public System.Windows.Forms.PictureBox pictureBox3;
+        public System.Windows.Forms.Button SignUpButton;
+        public System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

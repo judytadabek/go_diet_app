@@ -9,12 +9,11 @@ using System.Threading.Tasks;
 namespace GoDiet.Tests
 {
     [TestClass()]
-    public class SetupWindowTests
+    public class BinaryClassMLTests
     {
         [TestMethod()]
-        public void GetConnectionStringTest()
+        public void PredictWithModelLoadedFromFileTest()
         {
-
             Assert.Fail();
         }
     }

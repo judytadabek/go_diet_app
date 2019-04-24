@@ -32,7 +32,6 @@ namespace GoDiet
                 var resultSetupWindow = setup.ShowDialog();
                 if (resultSetupWindow == DialogResult.OK)
                 {
-                    //Application.Run(new InitialWindow());
                     if (initialWindow.ShowDialog() == DialogResult.OK)
                     {
                         Application.Run(new WelcomeScreen());
@@ -40,7 +39,17 @@ namespace GoDiet
                 }
                 else if (resultSetupWindow == DialogResult.No)
                 {
-                    Application.Run(initialWindow);
+                    var initWind2 = new InitialWindow();
+                    var res2 = initWind2.ShowDialog();
+                    if (res2 == DialogResult.OK)
+                    {
+                        var welcome2 = new WelcomeScreen();
+                        Application.Run(welcome2);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please, try again.");
+                    }
                 }
             }
             else
@@ -48,7 +57,6 @@ namespace GoDiet
                 //do nothing...
             }
 
-            //Application.Run(new InitialWindow());
         }
     }
 }

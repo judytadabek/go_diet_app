@@ -1,0 +1,27 @@
+===============================================
+Binary Classification Algorithm Data Record
+===============================================
+First Data Record on 4/19/2019 1:52:34 AM ................
+
+
+ =============== Create and Train the Model =============== 
+=============== End of training ===============
+=============== Evaluating Model accuracy with Test data===============
+Model quality metrics evaluation
+--------------------------------
+Accuracy: 89.11%
+Auc: 80.60%
+F1Score: 93.17%
+=============== End of model evaluation ===============
+------------------------------------------->
+The model is saved to C:\Users\Mój Komputer\Desktop\GoDietVersions\GoDietv3\GoDiet\\GoDiet\DietData\DataModel\modelPath\Model.zip
+==============================END OF PROCESS================================
+ 
+ 
+
+=============== Prediction Test of model with a single sample and test dataset ===============
+Sentiment: 17.67632 | Prediction: 0 | Probability: 0.338314 
+=============== End of Predictions ===============
+**********END OF PREDICTION *******************
+
+
